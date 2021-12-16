@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/coffee_table_tall_one",
+    "textures": {
+        "top": "block/polished_diorite",
+        "legs": "block/diorite"
+    }
+}

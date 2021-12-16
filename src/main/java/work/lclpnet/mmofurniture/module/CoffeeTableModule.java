@@ -4,13 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
-import work.lclpnet.mmofurniture.block.TableBlock;
+import work.lclpnet.mmofurniture.block.CoffeeTableBlock;
 
-public class TableModule extends AbstractVariantModule {
+public class CoffeeTableModule extends AbstractVariantModule {
 
     @Override
     protected void registerVariant(String variant, Block parent) {
-        new MMOBlockRegistrar(new TableBlock(parent))
-                .register(MMOFurniture.identifier("%s_table", variant), ItemGroup.DECORATIONS);
+        new MMOBlockRegistrar(new CoffeeTableBlock(parent))
+                .register(MMOFurniture.identifier("%s_coffee_table", variant), ItemGroup.DECORATIONS);
     }
 }

@@ -35,6 +35,6 @@ public class ChairModule extends AbstractVariantModule {
     @Override
     protected void registerVariant(String variant, Block parent) {
         new MMOBlockRegistrar(new ChairBlock(parent))
-                .register(MMOFurniture.identifier(String.format("%s_chair", variant)), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_chair", variant), ItemGroup.DECORATIONS);
     }
 }

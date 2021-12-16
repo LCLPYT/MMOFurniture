@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import work.lclpnet.mmofurniture.module.ChairModule;
+import work.lclpnet.mmofurniture.module.CoffeeTableModule;
 import work.lclpnet.mmofurniture.module.IModule;
 import work.lclpnet.mmofurniture.module.TableModule;
 
@@ -15,7 +16,8 @@ public class MMOFurniture implements ModInitializer {
 
     public static final Set<IModule> MODULES = ImmutableSet.of(
             new TableModule(),
-            new ChairModule()
+            new ChairModule(),
+            new CoffeeTableModule()
     );
 
     @Override
@@ -25,5 +27,9 @@ public class MMOFurniture implements ModInitializer {
 
     public static Identifier identifier(String path) {
         return new Identifier(MOD_ID, path);
+    }
+
+    public static Identifier identifier(String format, Object... args) {
+        return identifier(String.format(format, args));
     }
 }
