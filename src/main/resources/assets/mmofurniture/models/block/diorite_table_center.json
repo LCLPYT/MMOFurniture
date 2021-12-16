@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/table_center",
+    "textures": {
+        "top": "block/polished_diorite",
+        "legs": "block/diorite"
+    }
+}

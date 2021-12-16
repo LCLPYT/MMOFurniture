@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/table_corner",
+    "textures": {
+        "top": "block/stone",
+        "legs": "block/cobblestone"
+    }
+}

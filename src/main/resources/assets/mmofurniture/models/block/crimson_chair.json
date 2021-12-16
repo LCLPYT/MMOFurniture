@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/chair",
+    "textures": {
+        "seat": "minecraft:block/crimson_stem",
+        "legs": "minecraft:block/stripped_crimson_stem"
+    }
+}

@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "work.lclpnet.mmofurniture.MMOFurniture"
+    ],
+    "client": [
+      "work.lclpnet.mmofurniture.client.MMOFurnitureClient"
     ]
   },
   "mixins": [

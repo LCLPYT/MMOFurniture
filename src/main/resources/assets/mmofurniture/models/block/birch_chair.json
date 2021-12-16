@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/chair",
+    "textures": {
+        "seat": "minecraft:block/birch_log",
+        "legs": "minecraft:block/stripped_birch_log"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/table",
+    "textures": {
+        "top": "block/acacia_log",
+        "legs": "block/stripped_acacia_log"
+    }
+}

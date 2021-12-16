@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/table_end",
+    "textures": {
+        "top": "block/polished_andesite",
+        "legs": "block/andesite"
+    }
+}

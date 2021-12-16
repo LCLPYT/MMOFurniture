@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/chair",
+    "textures": {
+        "seat": "block/stripped_warped_stem",
+        "legs": "block/warped_stem"
+    }
+}

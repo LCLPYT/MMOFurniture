@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/table_end",
+    "textures": {
+        "top": "block/stripped_crimson_stem",
+        "legs": "block/crimson_stem"
+    }
+}
