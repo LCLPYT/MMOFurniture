@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/desk_middle",
+    "textures": {
+        "base": "minecraft:block/cobblestone",
+        "top": "block/stone"
+    }
+}

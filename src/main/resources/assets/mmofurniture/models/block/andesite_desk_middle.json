@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/desk_middle",
+    "textures": {
+        "base": "minecraft:block/andesite",
+        "top": "block/polished_andesite"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/desk_middle",
+    "textures": {
+        "base": "minecraft:block/acacia_planks",
+        "top": "minecraft:block/acacia_log"
+    }
+}
