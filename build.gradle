@@ -1,0 +1,166 @@
+import java.util.stream.Collectors
+
+plugins {
+    id 'fabric-loom'
+    id 'maven-publish'
+}
+
+def privateProps = loadPrivateProps()
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+archivesBaseName = project.archives_base_name
+version = getVersion()
+group = project.maven_group
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://repo.lclpnet.work/repository/internal"
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "work.lclpnet.mods:mmocontent:${project.mmocontent_version}"
+
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+loom {
+//    accessWidener = file("src/main/resources/mmoquark.accesswidener")
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+
+    // The Minecraft launcher currently installs Java 8 for users, so your mod probably wants to target Java 8 too
+    // JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
+    // We'll use that if it's available, but otherwise we'll use the older option.
+    def targetVersion = 8
+    if (JavaVersion.current().isJava9Compatible()) {
+        it.options.release = targetVersion
+    }
+}
+
+java {
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE.md") {
+        rename { "${it}_${project.archivesBaseName}"}
+    }
+}
+
+// configure the maven publication
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = project.archives_base_name
+
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+
+            pom {
+                name = 'MMOFurniture'
+                description = 'A lightweight Fabric port of Mr Crayfish\'s furniture Minecraft modification.'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            def env = System.getenv()
+            if (Arrays.stream("DEPLOY_URL", "DEPLOY_USER", "DEPLOY_PASSWORD").allMatch(env.&containsKey)) {
+                credentials {
+                    username env.get("DEPLOY_USER")
+                    password env.get("DEPLOY_PASSWORD")
+                }
+                url env.get("DEPLOY_URL")
+            }
+            else if (Arrays.stream("mavenHost", "mavenUser", "mavenPassword").allMatch(privateProps.&containsKey)) {
+                credentials {
+                    username privateProps.getProperty('mavenUser')
+                    password privateProps.getProperty('mavenPassword')
+                }
+                url privateProps.getProperty('mavenHost')
+            } else {
+                url "file:///${project.projectDir}/repo"
+            }
+        }
+    }
+}
+
+// helper functions
+def getVersion() {
+    try {
+        String version
+        if (System.getenv().containsKey("CI_VERSION")) version = System.getenv().get("CI_VERSION")
+        else {
+            // First, fetch all tags, to ensure all the tags are found
+            execProcess("git", "fetch", "--tags", "--force")
+
+            // now actually get latest tag with git describe
+            def (exitCode, out, err) = execProcess("git", "describe", "--tags", "--abbrev=0")
+
+            // log outputs
+            println out
+            if (!err.isEmpty()) System.err.println err
+
+            // throw on error
+            if (exitCode != 0) throw new IOException("Git error, make sure you have at least one tag")
+
+            version = out.toString().trim().split("\\r?\\n")[0]
+        }
+
+        if (!version.matches('^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-z0-9]+)?$')) throw new IllegalStateException("Latest tag '${version}' does not match the required versioning scheme")
+
+        return version
+    } catch (Exception ex) {
+        IllegalStateException wrapper = new IllegalStateException("Could not determine version")
+        wrapper.addSuppressed(ex)
+        throw wrapper
+    }
+}
+
+Tuple3<Integer, String, String> execProcess(String... args) {
+    ProcessBuilder builder = new ProcessBuilder(args)
+    builder.directory(project.projectDir)
+    println "Executing '" + builder.command().stream().collect(Collectors.joining(" ")) + "' in '" + builder.directory().getAbsolutePath() + "' ..."
+    Process process = builder.start()
+    StringBuilder stdout = new StringBuilder(), stderr = new StringBuilder()
+    process.consumeProcessOutput(stdout, stderr)
+    int exitCode = process.waitFor()
+    println "Process exited with code " + exitCode
+    return new Tuple3<>(exitCode, stdout.toString(), stderr.toString())
+}
+
+Properties loadPrivateProps() {
+    Properties privateProps = new Properties()
+    File privatePropsFile = new File(project.projectDir, "private.properties")
+    if (privatePropsFile.exists()) {
+        privatePropsFile.withInputStream {
+            privateProps.load(it)
+        }
+    }
+    return privateProps
+}
