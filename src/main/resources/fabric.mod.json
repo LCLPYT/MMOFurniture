@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "mmofurniture",
+  "version": "${version}",
+
+  "name": "MMOFurniture",
+  "description": "Lightweight fabric port of Mr Crayfish's furniture mod.",
+  "authors": [
+    "LCLP"
+  ],
+  "contact": {
+    "homepage": "https://github.com/LCLPYT/MMOFurniture",
+    "sources": "https://github.com/LCLPYT/MMOFurniture"
+  },
+
+  "license": "GPL v3",
+  "icon": "assets/mmofurniture/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "work.lclpnet.mmofurniture.MMOFurniture"
+    ]
+  },
+  "mixins": [
+    "mmofurniture.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x",
+    "mmocontent": "1.0.x"
+  },
+  "suggests": {},
+  "accessWidener": "mmofurniture.accesswidener"
+}
