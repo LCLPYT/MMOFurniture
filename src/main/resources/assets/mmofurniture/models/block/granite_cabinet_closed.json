@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/cabinet_closed",
+    "textures": {
+        "door": "block/polished_granite",
+        "base": "block/granite"
+    }
+}

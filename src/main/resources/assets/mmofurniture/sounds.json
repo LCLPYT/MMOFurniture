@@ -1,0 +1,18 @@
+{
+    "block.cabinet.open": {
+        "subtitle": "subtitle.mmofurniture.open_cabinet",
+        "sounds": [ "mmofurniture:block/cabinet/open" ]
+    },
+    "block.cabinet.close": {
+        "subtitle": "subtitle.mmofurniture.close_cabinet",
+        "sounds": [ "mmofurniture:block/cabinet/close" ]
+    },
+    "block.bedside_cabinet.open": {
+        "subtitle": "subtitle.mmofurniture.open_cabinet",
+        "sounds": [ "mmofurniture:block/bedside_cabinet/open" ]
+    },
+    "block.bedside_cabinet.close": {
+        "subtitle": "subtitle.mmofurniture.close_cabinet",
+        "sounds": [ "mmofurniture:block/bedside_cabinet/close" ]
+    }
+}

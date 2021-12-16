@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/cabinet_open",
+    "textures": {
+        "door": "block/polished_diorite",
+        "base": "block/diorite"
+    }
+}

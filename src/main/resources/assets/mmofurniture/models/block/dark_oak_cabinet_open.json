@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/cabinet_open",
+    "textures": {
+        "door": "block/dark_oak_log",
+        "base": "block/dark_oak_planks"
+    }
+}

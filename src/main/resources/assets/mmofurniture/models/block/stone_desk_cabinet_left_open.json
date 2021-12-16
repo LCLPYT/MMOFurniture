@@ -1,0 +1,10 @@
+{
+    "parent": "mmofurniture:block/desk_cabinet_left_open",
+    "textures": {
+        "top": "block/stone",
+        "base": "block/cobblestone",
+        "draw": "block/cobblestone",
+        "draw_front": "block/stone",
+        "legs": "block/cobblestone"
+    }
+}

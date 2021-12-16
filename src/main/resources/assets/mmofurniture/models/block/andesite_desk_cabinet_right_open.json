@@ -1,0 +1,10 @@
+{
+    "parent": "mmofurniture:block/desk_cabinet_right_open",
+    "textures": {
+        "top": "block/polished_andesite",
+        "base": "block/andesite",
+        "draw": "block/andesite",
+        "draw_front": "block/polished_andesite",
+        "legs": "block/andesite"
+    }
+}

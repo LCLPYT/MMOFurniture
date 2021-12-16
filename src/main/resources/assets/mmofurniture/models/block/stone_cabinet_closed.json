@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/cabinet_closed",
+    "textures": {
+        "door": "block/stone",
+        "base": "block/cobblestone"
+    }
+}

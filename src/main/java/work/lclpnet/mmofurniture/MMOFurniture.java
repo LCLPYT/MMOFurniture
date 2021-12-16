@@ -3,10 +3,8 @@ package work.lclpnet.mmofurniture;
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
-import work.lclpnet.mmofurniture.module.ChairModule;
-import work.lclpnet.mmofurniture.module.CoffeeTableModule;
-import work.lclpnet.mmofurniture.module.IModule;
-import work.lclpnet.mmofurniture.module.TableModule;
+import work.lclpnet.mmofurniture.module.*;
+import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
 import java.util.Set;
 
@@ -17,12 +15,15 @@ public class MMOFurniture implements ModInitializer {
     public static final Set<IModule> MODULES = ImmutableSet.of(
             new TableModule(),
             new ChairModule(),
-            new CoffeeTableModule()
+            new CoffeeTableModule(),
+            new CabinetModule(),
+            new BedsideCabinetModule()
     );
 
     @Override
     public void onInitialize() {
         MODULES.forEach(IModule::register);
+        FurnitureSounds.init();
     }
 
     public static Identifier identifier(String path) {

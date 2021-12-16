@@ -1,0 +1,9 @@
+{
+    "parent": "mmofurniture:block/bedside_cabinet_open",
+    "textures": {
+        "base": "minecraft:block/cobblestone",
+        "top": "minecraft:block/stone",
+        "draw": "minecraft:block/cobblestone",
+        "draw_front": "minecraft:block/stone"
+    }
+}
