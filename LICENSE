@@ -672,3 +672,11 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+
+Attribution
+
+This project uses assets from Mr Crayfish's Furniture Mod (https://github.com/MrCrayfish/MrCrayfishFurnitureMod).
+These assets include images, language data, sounds and model data (src/main/resources/assets/*) as well as
+other data (src/main/resources/data/*).
+All of those were originally created by MrCrayfish (https://github.com/MrCrayfish) and the Furniture mod contributors (https://github.com/MrCrayfish/MrCrayfishFurnitureMod/graphs/contributors).
