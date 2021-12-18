@@ -9,5 +9,7 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": []
+  "mixins": [
+    "common.LandPathNodeMakerMixin"
+  ]
 }
