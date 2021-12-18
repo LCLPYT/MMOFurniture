@@ -19,7 +19,8 @@ public class MMOFurniture implements ModInitializer {
             new CabinetModule(),
             new BedsideCabinetModule(),
             new DeskModule(),
-            new DeskCabinetModule()
+            new DeskCabinetModule(),
+            new SofaModule()
     );
 
     @Override

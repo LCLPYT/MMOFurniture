@@ -65,6 +65,6 @@ public class ChairBlock extends FurnitureHorizontalWaterloggedBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        return SeatEntity.create(world, pos, 0.5, player);
+        return SeatEntity.create(world, pos, 0.5, player, -0.1F);
     }
 }
