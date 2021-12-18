@@ -4,10 +4,10 @@
   "package": "work.lclpnet.mmofurniture.asm.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
+    "client.BlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [
-  ]
+  "mixins": []
 }

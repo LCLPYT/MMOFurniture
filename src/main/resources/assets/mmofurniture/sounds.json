@@ -14,5 +14,13 @@
     "block.bedside_cabinet.close": {
         "subtitle": "subtitle.mmofurniture.close_cabinet",
         "sounds": [ "mmofurniture:block/bedside_cabinet/close" ]
+    },
+    "block.blinds.open": {
+        "subtitle": "subtitle.mmofurniture.open_blinds",
+        "sounds": [ "mmofurniture:block/blinds/open" ]
+    },
+    "block.blinds.close": {
+        "subtitle": "subtitle.mmofurniture.close_blinds",
+        "sounds": [ "mmofurniture:block/blinds/close" ]
     }
 }

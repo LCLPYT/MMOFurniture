@@ -14,6 +14,16 @@ public abstract class AbstractVariantModule implements IModule {
 
     public static final ImmutableList<String> VARIANTS;
 
+    protected final boolean registerStone;
+
+    public AbstractVariantModule() {
+        this(true);
+    }
+
+    public AbstractVariantModule(boolean registerStone) {
+        this.registerStone = registerStone;
+    }
+
     static {
         List<String> tmp = new ArrayList<>();
         CommonUtil.WOOD_TYPES.forEach(woodType -> {
@@ -36,10 +46,12 @@ public abstract class AbstractVariantModule implements IModule {
             registerVariant(String.format("stripped_%s", woodType), parent);
         });
 
-        CommonUtil.STONE_TYPES.forEach(stoneType -> {
-            Block parent = Registry.BLOCK.get(new Identifier(stoneType));
-            if (!Blocks.AIR.equals(parent)) registerVariant(stoneType, parent);
-        });
+        if (registerStone) {
+            CommonUtil.STONE_TYPES.forEach(stoneType -> {
+                Block parent = Registry.BLOCK.get(new Identifier(stoneType));
+                if (!Blocks.AIR.equals(parent)) registerVariant(stoneType, parent);
+            });
+        }
     }
 
     protected String getWoodParentPath(String variant) {

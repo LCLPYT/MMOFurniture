@@ -16,7 +16,9 @@ public class FurnitureSounds {
     public static final SoundEvent BLOCK_CABINET_OPEN = register("block.cabinet.open"),
             BLOCK_CABINET_CLOSE = register("block.cabinet.close"),
             BLOCK_BEDSIDE_CABINET_OPEN = register("block.bedside_cabinet.open"),
-            BLOCK_BEDSIDE_CABINET_CLOSE = register("block.bedside_cabinet.close");
+            BLOCK_BEDSIDE_CABINET_CLOSE = register("block.bedside_cabinet.close"),
+            BLOCK_BLINDS_OPEN = register("block.blinds.open"),
+            BLOCK_BLINDS_CLOSE = register("block.blinds.close");
 
     public static SoundEvent register(String name) {
         Identifier loc = MMOFurniture.identifier(name);

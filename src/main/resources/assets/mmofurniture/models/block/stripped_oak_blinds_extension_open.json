@@ -1,0 +1,7 @@
+{
+    "parent": "mmofurniture:block/blinds_extension_open",
+    "textures": {
+        "slat": "minecraft:block/oak_planks",
+        "cord": "minecraft:block/oak_log"
+    }
+}
