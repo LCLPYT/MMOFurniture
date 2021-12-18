@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "mmofurniture:oak_upgraded_gate",
+    "mmofurniture:spruce_upgraded_gate",
+    "mmofurniture:birch_upgraded_gate",
+    "mmofurniture:jungle_upgraded_gate",
+    "mmofurniture:acacia_upgraded_gate",
+    "mmofurniture:dark_oak_upgraded_gate",
+    "mmofurniture:crimson_upgraded_gate",
+    "mmofurniture:warped_upgraded_gate",
+    "mmofurniture:stripped_oak_upgraded_gate",
+    "mmofurniture:stripped_spruce_upgraded_gate",
+    "mmofurniture:stripped_birch_upgraded_gate",
+    "mmofurniture:stripped_jungle_upgraded_gate",
+    "mmofurniture:stripped_acacia_upgraded_gate",
+    "mmofurniture:stripped_dark_oak_upgraded_gate",
+    "mmofurniture:stripped_crimson_upgraded_gate",
+    "mmofurniture:stripped_warped_upgraded_gate"
+  ]
+}

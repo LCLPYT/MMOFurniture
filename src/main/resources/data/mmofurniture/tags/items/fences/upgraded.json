@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "mmofurniture:oak_upgraded_fence",
+    "mmofurniture:spruce_upgraded_fence",
+    "mmofurniture:birch_upgraded_fence",
+    "mmofurniture:jungle_upgraded_fence",
+    "mmofurniture:acacia_upgraded_fence",
+    "mmofurniture:dark_oak_upgraded_fence",
+    "mmofurniture:crimson_upgraded_fence",
+    "mmofurniture:warped_upgraded_fence",
+    "mmofurniture:stripped_oak_upgraded_fence",
+    "mmofurniture:stripped_spruce_upgraded_fence",
+    "mmofurniture:stripped_birch_upgraded_fence",
+    "mmofurniture:stripped_jungle_upgraded_fence",
+    "mmofurniture:stripped_acacia_upgraded_fence",
+    "mmofurniture:stripped_dark_oak_upgraded_fence",
+    "mmofurniture:stripped_crimson_upgraded_fence",
+    "mmofurniture:stripped_warped_upgraded_fence"
+  ]
+}

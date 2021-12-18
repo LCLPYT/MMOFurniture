@@ -257,6 +257,11 @@ public class UpgradedGateBlock extends FurnitureHorizontalWaterloggedBlock imple
     }
 
     @Override
+    public PathNodeType getPathNodeType(BlockState state, BlockView blockView, BlockPos pos) {
+        return !state.get(OPEN) ? PathNodeType.FENCE : PathNodeType.OPEN;
+    }
+
+    @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (!world.isClient()) {
             boolean powered = world.isReceivingRedstonePower(pos);
@@ -267,10 +272,5 @@ public class UpgradedGateBlock extends FurnitureHorizontalWaterloggedBlock imple
                 }
             }
         }
-    }
-
-    @Override
-    public PathNodeType getPathNodeType(BlockState state, BlockView blockView, BlockPos pos) {
-        return !state.get(OPEN) ? PathNodeType.FENCE : PathNodeType.OPEN;
     }
 }
