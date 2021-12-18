@@ -30,9 +30,9 @@ public class BedsideCabinetModule extends AbstractVariantModule {
 
     @Override
     protected void registerVariant(String variant, Block parent) {
-        BedsideCabinetBlock cabinet;
+        BedsideCabinetBlock cabinet = new BedsideCabinetBlock(parent);
 
-        new MMOBlockRegistrar(cabinet = new BedsideCabinetBlock(parent))
+        new MMOBlockRegistrar(cabinet)
                 .register(MMOFurniture.identifier("%s_bedside_cabinet", variant), ItemGroup.DECORATIONS);
 
         bedsideCabinetBlocks.add(cabinet);

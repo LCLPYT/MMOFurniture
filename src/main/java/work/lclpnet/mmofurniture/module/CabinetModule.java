@@ -30,9 +30,9 @@ public class CabinetModule extends AbstractVariantModule {
 
     @Override
     protected void registerVariant(String variant, Block parent) {
-        CabinetBlock cabinet;
+        CabinetBlock cabinet = new CabinetBlock(parent);
 
-        new MMOBlockRegistrar(cabinet = new CabinetBlock(parent))
+        new MMOBlockRegistrar(cabinet)
                 .register(MMOFurniture.identifier("%s_cabinet", variant), ItemGroup.DECORATIONS);
 
         cabinetBlocks.add(cabinet);

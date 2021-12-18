@@ -33,9 +33,9 @@ public class DeskCabinetModule extends AbstractVariantModule {
         int variantIdx = VARIANTS.indexOf(variant);
         if (variantIdx == -1) return;
 
-        DeskCabinetBlock cabinet;
+        DeskCabinetBlock cabinet = new DeskCabinetBlock(parent, (short) variantIdx);
 
-        new MMOBlockRegistrar(cabinet = new DeskCabinetBlock(parent, (short) variantIdx)) // only supports up to 2^16 - 2 variants
+        new MMOBlockRegistrar(cabinet) // only supports up to 2^16 - 2 variants
                 .register(MMOFurniture.identifier("%s_desk_cabinet", variant), ItemGroup.DECORATIONS);
 
         bedsideCabinetBlocks.add(cabinet);

@@ -4,12 +4,14 @@
   "package": "work.lclpnet.mmofurniture.asm.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "client.BlockMixin"
+    "client.BlockMixin",
+    "client.ClientPlayNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "common.LandPathNodeMakerMixin"
+    "common.LandPathNodeMakerMixin",
+    "common.PlayerEntityAccessor"
   ]
 }

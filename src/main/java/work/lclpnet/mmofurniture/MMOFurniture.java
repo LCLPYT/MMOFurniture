@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import work.lclpnet.mmofurniture.module.*;
+import work.lclpnet.mmofurniture.network.FurnitureNetworking;
 import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
 import java.util.Set;
@@ -23,11 +24,15 @@ public class MMOFurniture implements ModInitializer {
             new SofaModule(),
             new BlindsModule(),
             new UpgradedFenceModule(),
-            new UpgradedGateModule()
+            new UpgradedGateModule(),
+            new CratesModule()
     );
 
     @Override
     public void onInitialize() {
+        FurnitureNetworking.registerPackets();
+        FurnitureNetworking.registerServerPacketHandlers();
+
         MODULES.forEach(IModule::register);
         FurnitureSounds.init();
     }
