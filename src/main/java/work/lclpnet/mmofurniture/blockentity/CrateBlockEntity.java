@@ -31,14 +31,14 @@ import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
 import java.util.UUID;
 
-public class CrateBlockEntity extends BasicLootTileEntity implements IUpdatePacketReceiver, ExtendedScreenHandlerFactory {
+public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePacketReceiver, ExtendedScreenHandlerFactory {
 
     private UUID ownerUuid;
     private boolean locked;
     private int playerCount;
 
     public CrateBlockEntity() {
-        super(CratesModule.tileEntityType);
+        super(CratesModule.blockEntityType);
     }
 
     @Override

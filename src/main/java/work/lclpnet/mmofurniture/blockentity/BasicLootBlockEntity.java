@@ -3,7 +3,6 @@ package work.lclpnet.mmofurniture.blockentity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
@@ -15,12 +14,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Iterator;
 import java.util.stream.IntStream;
 
-public abstract class BasicLootTileEntity extends LootableContainerBlockEntity implements SidedInventory {
+public abstract class BasicLootBlockEntity extends LootableContainerBlockEntity implements SidedInventory {
 
     private final int[] slots;
     protected DefaultedList<ItemStack> inventory;
 
-    protected BasicLootTileEntity(BlockEntityType<?> blockEntityType) {
+    protected BasicLootBlockEntity(BlockEntityType<?> blockEntityType) {
         super(blockEntityType);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         this.slots = IntStream.range(0, this.size()).toArray();

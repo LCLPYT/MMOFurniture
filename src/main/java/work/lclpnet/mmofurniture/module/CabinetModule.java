@@ -14,15 +14,14 @@ import java.util.Set;
 
 public class CabinetModule extends AbstractVariantModule {
 
-    public static BlockEntityType<CabinetBlockEntity> tileEntityType;
-
+    public static BlockEntityType<CabinetBlockEntity> blockEntityType;
     private static Set<CabinetBlock> cabinetBlocks = new HashSet<>();
 
     @Override
     public void register() {
         super.register();
 
-        tileEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("cabinet"),
+        blockEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("cabinet"),
                 BlockEntityType.Builder.create(CabinetBlockEntity::new, cabinetBlocks.toArray(new CabinetBlock[0])).build(null));
 
         cabinetBlocks = null;

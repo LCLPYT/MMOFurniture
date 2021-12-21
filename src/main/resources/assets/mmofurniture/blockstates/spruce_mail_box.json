@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "mmofurniture:block/spruce_mail_box",
+            "y": 0
+        },
+        "facing=east": {
+            "model": "mmofurniture:block/spruce_mail_box",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "mmofurniture:block/spruce_mail_box",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "mmofurniture:block/spruce_mail_box",
+            "y": 270
+        }
+    }
+}

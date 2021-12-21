@@ -17,13 +17,12 @@ import java.util.Set;
 
 public class CratesModule extends AbstractVariantModule {
 
-    public static BlockEntityType<CrateBlockEntity> tileEntityType;
+    public static BlockEntityType<CrateBlockEntity> blockEntityType;
     public static final ScreenHandlerType<CrateScreenHandler> screenHandlerType = ScreenHandlerRegistry.registerExtended(MMOFurniture.identifier("crate"), (syncId, inventory, buf) -> {
         CrateBlockEntity crateBlockEntity = (CrateBlockEntity) inventory.player.world.getBlockEntity(buf.readBlockPos());
         if (crateBlockEntity == null) throw new IllegalStateException("Crate block entity was not found");
         return new CrateScreenHandler(syncId, inventory, crateBlockEntity, crateBlockEntity.isLocked());
     });
-
     private static Set<CrateBlock> crateBlocks = new HashSet<>();
 
     public CratesModule() {
@@ -34,7 +33,7 @@ public class CratesModule extends AbstractVariantModule {
     public void register() {
         super.register();
 
-        tileEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("crate"),
+        blockEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("crate"),
                 BlockEntityType.Builder.create(CrateBlockEntity::new, crateBlocks.toArray(new CrateBlock[0])).build(null));
 
         crateBlocks = null;

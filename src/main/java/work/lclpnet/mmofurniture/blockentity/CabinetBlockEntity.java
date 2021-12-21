@@ -17,12 +17,12 @@ import work.lclpnet.mmofurniture.block.CabinetBlock;
 import work.lclpnet.mmofurniture.module.CabinetModule;
 import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
-public class CabinetBlockEntity extends BasicLootTileEntity {
+public class CabinetBlockEntity extends BasicLootBlockEntity {
 
     private int playerCount;
 
     public CabinetBlockEntity() {
-        super(CabinetModule.tileEntityType);
+        super(CabinetModule.blockEntityType);
     }
 
     @Override
