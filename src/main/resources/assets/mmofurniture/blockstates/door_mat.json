@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "mmofurniture:block/door_mat",
+            "y": 0
+        },
+        "facing=east": {
+            "model": "mmofurniture:block/door_mat",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "mmofurniture:block/door_mat",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "mmofurniture:block/door_mat",
+            "y": 270
+        }
+    }
+}
