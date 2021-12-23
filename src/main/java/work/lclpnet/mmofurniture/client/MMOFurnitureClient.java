@@ -13,7 +13,8 @@ public class MMOFurnitureClient implements ClientModInitializer {
             new ChairClientModule(),
             new CratesClientModule(),
             new MailBoxClientModule(),
-            new HedgeClientModule()
+            new HedgeClientModule(),
+            new DoorMatClientModule()
     );
 
     @Override

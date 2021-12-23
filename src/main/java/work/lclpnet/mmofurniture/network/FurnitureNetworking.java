@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import org.apache.logging.log4j.LogManager;
 import work.lclpnet.mmocontent.networking.MMOPacketRegistrar;
 import work.lclpnet.mmocontent.util.Env;
+import work.lclpnet.mmofurniture.network.packet.DoorMatMessagePacket;
 import work.lclpnet.mmofurniture.network.packet.LockCratePacket;
 
 public class FurnitureNetworking {
@@ -16,6 +17,7 @@ public class FurnitureNetworking {
 
         registrar = new MMOPacketRegistrar(LogManager.getLogger());
         registrar.register(LockCratePacket.ID, new LockCratePacket.Decoder());
+        registrar.register(DoorMatMessagePacket.ID, new DoorMatMessagePacket.Decoder());
     }
 
     @Environment(EnvType.CLIENT)

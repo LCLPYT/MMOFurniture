@@ -29,7 +29,8 @@ public class MMOFurniture implements ModInitializer {
             new ParkBenchModule(),
             new MailBoxModule(),
             new HedgeModule(),
-            new RockPathModule()
+            new RockPathModule(),
+            new DoorMatModule()
     );
 
     @Override
