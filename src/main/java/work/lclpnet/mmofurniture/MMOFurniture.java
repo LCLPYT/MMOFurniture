@@ -28,7 +28,8 @@ public class MMOFurniture implements ModInitializer {
             new CratesModule(),
             new ParkBenchModule(),
             new MailBoxModule(),
-            new HedgeModule()
+            new HedgeModule(),
+            new RockPathModule()
     );
 
     @Override
