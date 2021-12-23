@@ -1,0 +1,6 @@
+{
+    "parent": "mmofurniture:block/hedge_post_side",
+    "textures": {
+        "leaves": "minecraft:block/acacia_leaves"
+    }
+}

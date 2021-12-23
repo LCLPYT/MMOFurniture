@@ -6,18 +6,17 @@ import java.util.Set;
 
 public class CommonUtil {
 
-    public static final Set<String> WOOD_TYPES = ImmutableSet.of(
+    public static final Set<String> OVERWORLD_WOOD_TYPES = ImmutableSet.of(
             "oak",
             "spruce",
             "birch",
             "jungle",
             "acacia",
-            "dark_oak",
+            "dark_oak"
+    ), NETHER_WOOD_TYPES = ImmutableSet.of(
             "crimson",
             "warped"
-    );
-
-    public static final Set<String> STONE_TYPES = ImmutableSet.of(
+    ), STONE_TYPES = ImmutableSet.of(
             "stone",
             "granite",
             "diorite",

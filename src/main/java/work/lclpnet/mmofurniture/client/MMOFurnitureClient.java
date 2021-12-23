@@ -2,10 +2,7 @@ package work.lclpnet.mmofurniture.client;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ClientModInitializer;
-import work.lclpnet.mmofurniture.client.module.ChairClientModule;
-import work.lclpnet.mmofurniture.client.module.CratesClientModule;
-import work.lclpnet.mmofurniture.client.module.IClientModule;
-import work.lclpnet.mmofurniture.client.module.MailBoxClientModule;
+import work.lclpnet.mmofurniture.client.module.*;
 import work.lclpnet.mmofurniture.network.FurnitureNetworking;
 
 import java.util.Set;
@@ -15,7 +12,8 @@ public class MMOFurnitureClient implements ClientModInitializer {
     public static final Set<IClientModule> MODULES = ImmutableSet.of(
             new ChairClientModule(),
             new CratesClientModule(),
-            new MailBoxClientModule()
+            new MailBoxClientModule(),
+            new HedgeClientModule()
     );
 
     @Override
