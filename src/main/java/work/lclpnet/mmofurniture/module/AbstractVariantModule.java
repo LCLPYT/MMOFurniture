@@ -10,6 +10,7 @@ import work.lclpnet.mmofurniture.util.CommonUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public abstract class AbstractVariantModule implements IModule {
 
@@ -33,7 +34,7 @@ public abstract class AbstractVariantModule implements IModule {
 
     static {
         List<String> tmp = new ArrayList<>();
-        CommonUtil.OVERWORLD_WOOD_TYPES.forEach(woodType -> {
+        Stream.concat(CommonUtil.OVERWORLD_WOOD_TYPES.stream(), CommonUtil.NETHER_WOOD_TYPES.stream()).forEach(woodType -> {
             tmp.add(woodType);
             tmp.add(String.format("stripped_%s", woodType));
         });
