@@ -9,7 +9,7 @@
       "item": "minecraft:stripped_crimson_stem"
     },
     "G": {
-      "tag": "forge:fence_gates/wooden"
+      "tag": "minecraft:fence_gates"
     }
   },
   "result": {

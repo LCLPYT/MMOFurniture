@@ -11,7 +11,7 @@
       "item": "minecraft:warped_stem"
     },
     "S": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stick"
     }
   },
   "result": {

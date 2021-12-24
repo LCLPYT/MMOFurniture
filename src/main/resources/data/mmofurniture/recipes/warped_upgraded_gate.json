@@ -9,7 +9,7 @@
       "item": "minecraft:warped_stem"
     },
     "G": {
-      "tag": "forge:fence_gates/wooden"
+      "tag": "minecraft:fence_gates"
     }
   },
   "result": {

@@ -9,7 +9,7 @@
       "item": "minecraft:dark_oak_log"
     },
     "G": {
-      "tag": "forge:fence_gates/wooden"
+      "tag": "minecraft:fence_gates"
     }
   },
   "result": {

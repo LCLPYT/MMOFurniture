@@ -11,7 +11,7 @@
       "item": "minecraft:stripped_dark_oak_log"
     },
     "S": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stick"
     }
   },
   "result": {

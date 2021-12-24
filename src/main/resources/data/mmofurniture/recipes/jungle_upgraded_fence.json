@@ -10,7 +10,7 @@
       "item": "minecraft:jungle_log"
     },
     "S": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stick"
     }
   },
   "result": {

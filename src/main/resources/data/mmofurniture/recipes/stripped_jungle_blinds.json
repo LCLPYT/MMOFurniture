@@ -11,7 +11,7 @@
       "item": "minecraft:stripped_jungle_log"
     },
     "S": {
-      "tag": "forge:rods/wooden"
+      "item": "minecraft:stick"
     }
   },
   "result": {

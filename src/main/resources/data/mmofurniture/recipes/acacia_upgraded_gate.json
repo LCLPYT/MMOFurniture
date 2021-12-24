@@ -9,7 +9,7 @@
       "item": "minecraft:acacia_log"
     },
     "G": {
-      "tag": "forge:fence_gates/wooden"
+      "tag": "minecraft:fence_gates"
     }
   },
   "result": {

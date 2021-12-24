@@ -8,7 +8,7 @@
   ],
   "key": {
     "C": {
-      "tag": "forge:chests/wooden"
+      "item": "minecraft:chest"
     },
     "F": {
       "item": "mmofurniture:jungle_upgraded_fence"
