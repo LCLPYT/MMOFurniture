@@ -2,7 +2,11 @@ package work.lclpnet.mmofurniture;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmofurniture.module.*;
 import work.lclpnet.mmofurniture.network.FurnitureNetworking;
 import work.lclpnet.mmofurniture.sound.FurnitureSounds;
@@ -12,6 +16,11 @@ import java.util.Set;
 public class MMOFurniture implements ModInitializer {
 
     public static final String MOD_ID = "mmofurniture";
+
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
+            MMOFurniture.identifier("item_group"),
+            () -> new ItemStack(Registry.BLOCK.get(MMOFurniture.identifier("oak_chair")))
+    );
 
     public static final Set<IModule> MODULES = ImmutableSet.of(
             new TableModule(),

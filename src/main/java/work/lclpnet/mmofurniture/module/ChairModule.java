@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
@@ -35,6 +34,6 @@ public class ChairModule extends AbstractVariantModule {
     @Override
     protected void registerVariant(String variant, Block parent) {
         new MMOBlockRegistrar(new ChairBlock(parent))
-                .register(MMOFurniture.identifier("%s_chair", variant), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_chair", variant), MMOFurniture.ITEM_GROUP);
     }
 }

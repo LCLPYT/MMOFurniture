@@ -2,7 +2,6 @@ package work.lclpnet.mmofurniture.module;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
@@ -35,7 +34,7 @@ public class DeskCabinetModule extends AbstractVariantModule {
         DeskCabinetBlock cabinet = new DeskCabinetBlock(parent, (short) variantIdx);
 
         new MMOBlockRegistrar(cabinet) // only supports up to 2^16 - 2 variants
-                .register(MMOFurniture.identifier("%s_desk_cabinet", variant), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_desk_cabinet", variant), MMOFurniture.ITEM_GROUP);
 
         bedsideCabinetBlocks.add(cabinet);
     }

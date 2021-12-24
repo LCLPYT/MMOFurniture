@@ -1,7 +1,6 @@
 package work.lclpnet.mmofurniture.module;
 
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
@@ -17,7 +16,7 @@ public class DoorMatModule implements IModule {
         DoorMatBlock doorMatBlock = new DoorMatBlock();
 
         new MMOBlockRegistrar(doorMatBlock)
-                .register(MMOFurniture.identifier("door_mat"), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("door_mat"), MMOFurniture.ITEM_GROUP);
 
         blockEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("door_mat"),
                 BlockEntityType.Builder.create(DoorMatBlockEntity::new, doorMatBlock).build(null));

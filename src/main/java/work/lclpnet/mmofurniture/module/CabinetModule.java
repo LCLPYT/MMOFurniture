@@ -2,7 +2,6 @@ package work.lclpnet.mmofurniture.module;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
@@ -32,7 +31,7 @@ public class CabinetModule extends AbstractVariantModule {
         CabinetBlock cabinet = new CabinetBlock(parent);
 
         new MMOBlockRegistrar(cabinet)
-                .register(MMOFurniture.identifier("%s_cabinet", variant), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_cabinet", variant), MMOFurniture.ITEM_GROUP);
 
         cabinetBlocks.add(cabinet);
     }

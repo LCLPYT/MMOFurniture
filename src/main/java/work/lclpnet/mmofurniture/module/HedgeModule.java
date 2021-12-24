@@ -3,7 +3,6 @@ package work.lclpnet.mmofurniture.module;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -31,7 +30,7 @@ public class HedgeModule extends AbstractVariantModule {
     @Override
     protected void registerVariant(String variant, Block parent) {
         new MMOBlockRegistrar(new HedgeBlock(parent))
-                .register(getIdentifier(variant), ItemGroup.DECORATIONS);
+                .register(getIdentifier(variant), MMOFurniture.ITEM_GROUP);
     }
 
     @Override

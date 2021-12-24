@@ -3,7 +3,6 @@ package work.lclpnet.mmofurniture.module;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
@@ -44,7 +43,7 @@ public class CratesModule extends AbstractVariantModule {
         CrateBlock crateBlock = new CrateBlock();
 
         new MMOBlockRegistrar(crateBlock)
-                .register(MMOFurniture.identifier("%s_crate", variant), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_crate", variant), MMOFurniture.ITEM_GROUP);
 
         crateBlocks.add(crateBlock);
     }

@@ -3,7 +3,6 @@ package work.lclpnet.mmofurniture.module;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
@@ -43,7 +42,7 @@ public class MailBoxModule extends AbstractVariantModule {
     protected void registerVariant(String variant, Block parent) {
         MailBoxBlock mailBox = new MailBoxBlock(parent);
         new MMOBlockRegistrar(mailBox)
-                .register(MMOFurniture.identifier("%s_mail_box", variant), ItemGroup.DECORATIONS);
+                .register(MMOFurniture.identifier("%s_mail_box", variant), MMOFurniture.ITEM_GROUP);
         mailBoxBlocks.add(mailBox);
     }
 }
