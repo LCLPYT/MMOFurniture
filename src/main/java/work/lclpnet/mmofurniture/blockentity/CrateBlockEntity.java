@@ -22,7 +22,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import work.lclpnet.mmofurniture.asm.mixin.common.PlayerEntityAccessor;
+import work.lclpnet.mmofurniture.asm.type.IPlayerEntity;
 import work.lclpnet.mmofurniture.block.CabinetBlock;
 import work.lclpnet.mmofurniture.block.CrateBlock;
 import work.lclpnet.mmofurniture.inventory.CrateScreenHandler;
@@ -155,7 +155,7 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
                 if (playerEntity.currentScreenHandler instanceof CrateScreenHandler) {
                     Inventory crateInventory = ((CrateScreenHandler) playerEntity.currentScreenHandler).getCrateBlockEntity();
                     if (this == crateInventory && !playerEntity.getUuid().equals(ownerUuid)) {
-                        ((PlayerEntityAccessor) playerEntity).invokeCloseHandledScreen();
+                        ((IPlayerEntity) playerEntity).closeCurrentHandledScreen();
                     }
                 }
             }
