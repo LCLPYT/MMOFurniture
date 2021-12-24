@@ -12,6 +12,6 @@
   },
   "mixins": [
     "common.LandPathNodeMakerMixin",
-    "common.PlayerEntityAccessor"
+    "common.PlayerEntityMixin"
   ]
 }
