@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:birch_upgraded_fence"
+      "item": "mmofurniture:birch_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:birch_mail_box"
+    "item": "mmofurniture:birch_mail_box"
   }
 }

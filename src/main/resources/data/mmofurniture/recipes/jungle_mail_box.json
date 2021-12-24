@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:jungle_upgraded_fence"
+      "item": "mmofurniture:jungle_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:jungle_mail_box"
+    "item": "mmofurniture:jungle_mail_box"
   }
 }

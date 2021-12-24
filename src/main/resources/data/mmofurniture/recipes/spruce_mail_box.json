@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:spruce_upgraded_fence"
+      "item": "mmofurniture:spruce_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:spruce_mail_box"
+    "item": "mmofurniture:spruce_mail_box"
   }
 }

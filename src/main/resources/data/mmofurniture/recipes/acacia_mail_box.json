@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:acacia_upgraded_fence"
+      "item": "mmofurniture:acacia_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:acacia_mail_box"
+    "item": "mmofurniture:acacia_mail_box"
   }
 }

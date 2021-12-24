@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:warped_upgraded_fence"
+      "item": "mmofurniture:warped_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:warped_mail_box"
+    "item": "mmofurniture:warped_mail_box"
   }
 }

@@ -11,10 +11,10 @@
       "tag": "forge:chests/wooden"
     },
     "F": {
-      "item": "cfm:oak_upgraded_fence"
+      "item": "mmofurniture:oak_upgraded_fence"
     }
   },
   "result": {
-    "item": "cfm:oak_mail_box"
+    "item": "mmofurniture:oak_mail_box"
   }
 }
