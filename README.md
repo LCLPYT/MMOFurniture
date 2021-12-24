@@ -1,7 +1,7 @@
 # MMOFurniture
 [![Gradle Publish](https://github.com/LCLPYT/MMOFurniture/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/LCLPYT/MMOFurniture/actions/workflows/gradle-publish.yml)
 
-A lightweight Fabric port of [Mr Crayfish's Furniture Mod](https://github.com/VazkiiMods/Quark), that aims to provide compatibility for porting worlds created in MinecraftForge with the official Furniture Mod.
+A lightweight Fabric port of [MrCrayfish's Furniture Mod](https://github.com/VazkiiMods/Quark), that aims to provide compatibility for porting worlds created in MinecraftForge with the official Furniture Mod.
 
 ## What this mod aims to be
 This mod does not aim to be an exact port of the original mod.
