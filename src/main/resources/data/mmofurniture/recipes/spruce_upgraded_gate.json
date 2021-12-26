@@ -9,7 +9,7 @@
       "item": "minecraft:spruce_log"
     },
     "G": {
-      "tag": "minecraft:fence_gates"
+      "tag": "mmofurniture:fence_gates"
     }
   },
   "result": {

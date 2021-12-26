@@ -9,7 +9,7 @@
       "item": "minecraft:stripped_oak_log"
     },
     "G": {
-      "tag": "minecraft:fence_gates"
+      "tag": "mmofurniture:fence_gates"
     }
   },
   "result": {
