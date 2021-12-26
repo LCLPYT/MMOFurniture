@@ -19,21 +19,33 @@ repositories {
     maven {
         url "https://repo.lclpnet.work/repository/internal"
     }
+
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // first party
     modImplementation "work.lclpnet.mods:mmocontent:${project.mmocontent_version}"
+
+    // Modrinth
+    modImplementation "maven.modrinth:sodium:${project.sodium_version}"
 
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 loom {
-    accessWidener = file("src/main/resources/mmofurniture.accesswidener")
+    accessWidenerPath = file("src/main/resources/mmofurniture.accesswidener")
 }
 
 processResources {

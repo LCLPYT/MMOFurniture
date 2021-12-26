@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "client": [
     "client.BlockMixin",
-    "client.ClientPlayNetworkHandlerMixin"
+    "client.ClientPlayNetworkHandlerMixin",
+    "sodium.BlockOcclusionCacheMixin"
   ],
   "injectors": {
     "defaultRequire": 1

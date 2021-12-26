@@ -129,6 +129,11 @@ public class BlindsBlock extends FurnitureHorizontalWaterloggedBlock {
     }
 
     @Override
+    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
+        return super.isSideInvisible(state, stateFrom, direction);
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(OPEN, EXTENSION);
