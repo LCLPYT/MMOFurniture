@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/blinds_closed",
-    "textures": {
-        "head_rail": "minecraft:block/oak_log",
-        "slat": "minecraft:block/stripped_oak_log",
-        "cord": "minecraft:block/white_concrete"
-    }
-}

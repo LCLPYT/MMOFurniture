@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/cabinet_closed",
-    "textures": {
-        "door": "block/acacia_log",
-        "base": "block/stripped_acacia_log"
-    }
-}

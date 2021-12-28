@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_middle",
-    "textures": {
-        "base": "minecraft:block/stripped_crimson_stem",
-        "top": "minecraft:block/stripped_crimson_stem"
-    }
-}

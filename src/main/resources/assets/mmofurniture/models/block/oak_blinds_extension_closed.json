@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/blinds_extension_closed",
-    "textures": {
-        "slat": "minecraft:block/stripped_oak_log",
-        "cord": "minecraft:block/white_concrete"
-    }
-}

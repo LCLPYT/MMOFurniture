@@ -1,9 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_cabinet_right_closed",
-    "textures": {
-        "top": "block/warped_stem",
-        "base": "block/warped_planks",
-        "draw_front": "block/warped_stem",
-        "legs": "block/warped_planks"
-    }
-}

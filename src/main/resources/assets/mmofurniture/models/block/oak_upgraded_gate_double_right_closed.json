@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/upgraded_gate_double_right_closed",
-    "textures": {
-        "hinge": "minecraft:block/light_gray_concrete",
-        "pole": "minecraft:block/oak_log",
-        "plank": "minecraft:block/oak_planks"
-    }
-}

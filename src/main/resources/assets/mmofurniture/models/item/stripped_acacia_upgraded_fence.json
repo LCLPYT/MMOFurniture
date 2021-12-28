@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:item/upgraded_fence",
-    "textures": {
-        "plank": "minecraft:block/stripped_acacia_log",
-        "middle": "minecraft:block/acacia_log",
-        "post": "minecraft:block/stripped_acacia_log"
-    }
-}

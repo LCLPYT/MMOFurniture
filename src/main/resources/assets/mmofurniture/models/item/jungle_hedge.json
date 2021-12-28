@@ -1,6 +1,0 @@
-{
-    "parent": "mmofurniture:item/hedge",
-    "textures": {
-        "leaves": "minecraft:block/jungle_leaves"
-    }
-}

@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class MMOFurniture implements ModInitializer {
 
-    public static final String MOD_ID = "mmofurniture";
+    public static final String MOD_ID = "cfm";
 
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
             MMOFurniture.identifier("item_group"),

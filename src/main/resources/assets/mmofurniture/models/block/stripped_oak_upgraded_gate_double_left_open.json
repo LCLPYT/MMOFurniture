@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/stripped_upgraded_gate_double_left_open",
-    "textures": {
-        "hinge": "minecraft:block/oak_log",
-        "pole": "minecraft:block/oak_planks",
-        "plank": "minecraft:block/stripped_oak_log"
-    }
-}

@@ -32,7 +32,7 @@ public class DeskCabinetBlockEntity extends BasicLootBlockEntity {
 
     @Override
     protected Text getContainerName() {
-        return new TranslatableText("container.mmofurniture.desk_cabinet");
+        return new TranslatableText("container.cfm.desk_cabinet");
     }
 
     @Override

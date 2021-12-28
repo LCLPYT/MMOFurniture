@@ -18,7 +18,7 @@ public class MailBoxBlockEntity extends BasicLootBlockEntity implements Extended
 
     @Override
     protected Text getContainerName() {
-        return new TranslatableText("container.mmofurniture.mail_box");
+        return new TranslatableText("container.cfm.mail_box");
     }
 
     @Override

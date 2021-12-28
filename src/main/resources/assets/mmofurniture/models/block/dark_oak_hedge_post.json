@@ -1,6 +1,0 @@
-{
-    "parent": "mmofurniture:block/hedge_post",
-    "textures": {
-        "leaves": "minecraft:block/dark_oak_leaves"
-    }
-}

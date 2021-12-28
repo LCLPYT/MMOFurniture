@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/cabinet_closed",
-    "textures": {
-        "door": "block/jungle_log",
-        "base": "block/jungle_planks"
-    }
-}

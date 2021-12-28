@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_left",
-    "textures": {
-        "base": "minecraft:block/spruce_planks",
-        "top": "minecraft:block/spruce_log",
-        "legs": "minecraft:block/spruce_planks"
-    }
-}

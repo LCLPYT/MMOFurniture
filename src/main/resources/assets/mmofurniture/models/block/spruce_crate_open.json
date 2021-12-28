@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/crate_open",
-    "textures": {
-        "hinge": "minecraft:block/light_gray_concrete",
-        "panel": "minecraft:block/spruce_planks",
-        "frame": "minecraft:block/spruce_log"
-    }
-}

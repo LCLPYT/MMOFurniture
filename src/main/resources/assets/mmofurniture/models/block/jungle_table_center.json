@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/table_center",
-    "textures": {
-        "top": "block/jungle_log",
-        "legs": "block/stripped_jungle_log"
-    }
-}

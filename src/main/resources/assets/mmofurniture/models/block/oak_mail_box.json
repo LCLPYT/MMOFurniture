@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/mail_box",
-    "textures": {
-        "roof": "minecraft:block/oak_log",
-        "box": "minecraft:block/oak_planks"
-    }
-}

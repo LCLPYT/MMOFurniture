@@ -1,9 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_cabinet_left_closed",
-    "textures": {
-        "top": "block/oak_log",
-        "base": "block/oak_planks",
-        "draw_front": "block/oak_log",
-        "legs": "block/oak_planks"
-    }
-}

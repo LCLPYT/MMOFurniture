@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/coffee_table_short_none",
-    "textures": {
-        "top": "block/acacia_log",
-        "legs": "block/stripped_acacia_log"
-    }
-}

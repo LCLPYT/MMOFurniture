@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/sofa_left",
-    "textures": {
-        "wool": "minecraft:block/green_wool",
-        "support": "minecraft:block/oak_log"
-    }
-}

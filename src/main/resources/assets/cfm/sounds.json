@@ -1,0 +1,26 @@
+{
+    "block.cabinet.open": {
+        "subtitle": "subtitle.cfm.open_cabinet",
+        "sounds": [ "cfm:block/cabinet/open" ]
+    },
+    "block.cabinet.close": {
+        "subtitle": "subtitle.cfm.close_cabinet",
+        "sounds": [ "cfm:block/cabinet/close" ]
+    },
+    "block.bedside_cabinet.open": {
+        "subtitle": "subtitle.cfm.open_cabinet",
+        "sounds": [ "cfm:block/bedside_cabinet/open" ]
+    },
+    "block.bedside_cabinet.close": {
+        "subtitle": "subtitle.cfm.close_cabinet",
+        "sounds": [ "cfm:block/bedside_cabinet/close" ]
+    },
+    "block.blinds.open": {
+        "subtitle": "subtitle.cfm.open_blinds",
+        "sounds": [ "cfm:block/blinds/open" ]
+    },
+    "block.blinds.close": {
+        "subtitle": "subtitle.cfm.close_blinds",
+        "sounds": [ "cfm:block/blinds/close" ]
+    }
+}

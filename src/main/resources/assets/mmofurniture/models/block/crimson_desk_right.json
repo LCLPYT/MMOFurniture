@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_right",
-    "textures": {
-        "base": "minecraft:block/crimson_planks",
-        "top": "minecraft:block/crimson_stem",
-        "legs": "minecraft:block/crimson_planks"
-    }
-}

@@ -1,0 +1,10 @@
+{
+    "parent": "cfm:block/desk_cabinet_single_open",
+    "textures": {
+        "top": "block/spruce_log",
+        "base": "block/spruce_planks",
+        "draw": "block/stripped_spruce_log",
+        "draw_front": "block/spruce_log",
+        "legs": "block/spruce_planks"
+    }
+}

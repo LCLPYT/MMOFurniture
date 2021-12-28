@@ -31,7 +31,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
     @Override
     protected void init() {
         super.init();
-        this.button = this.addButton(new IconButtonWidget(x + backgroundWidth + 2, this.y + 17, new TranslatableText("gui.button.mmofurniture.lock"), button -> MMONetworking.sendPacketToServer(new LockCratePacket()), ICONS_TEXTURE, 0, 0));
+        this.button = this.addButton(new IconButtonWidget(x + backgroundWidth + 2, this.y + 17, new TranslatableText("gui.button.cfm.lock"), button -> MMONetworking.sendPacketToServer(new LockCratePacket()), ICONS_TEXTURE, 0, 0));
         this.updateLockButton();
     }
 
@@ -47,7 +47,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
     private void updateLockButton() {
         this.locked = this.handler.getCrateBlockEntity().isLocked();
         this.button.setIcon(ICONS_TEXTURE, this.locked ? 0 : 16, 0);
-        this.button.setMessage(new TranslatableText(this.locked ? "gui.button.mmofurniture.locked" : "gui.button.mmofurniture.unlocked"));
+        this.button.setMessage(new TranslatableText(this.locked ? "gui.button.cfm.locked" : "gui.button.cfm.unlocked"));
         UUID ownerUuid = this.handler.getCrateBlockEntity().getOwnerUuid();
         this.button.visible = ownerUuid == null || this.playerInventory.player.getUuid().equals(ownerUuid);
     }
@@ -58,7 +58,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
         super.render(matrices, mouseX, mouseY, delta);
         this.drawMouseoverTooltip(matrices, mouseX, mouseY);
         if (this.button.isMouseOver(mouseX, mouseY))
-            this.renderTooltip(matrices, new TranslatableText(this.locked ? "gui.button.mmofurniture.locked" : "gui.button.mmofurniture.unlocked"), mouseX, mouseY);
+            this.renderTooltip(matrices, new TranslatableText(this.locked ? "gui.button.cfm.locked" : "gui.button.cfm.unlocked"), mouseX, mouseY);
     }
 
     @Override

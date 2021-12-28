@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/table_corner",
-    "textures": {
-        "top": "block/birch_log",
-        "legs": "block/stripped_birch_log"
-    }
-}

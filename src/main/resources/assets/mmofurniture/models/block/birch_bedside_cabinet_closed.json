@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/bedside_cabinet_closed",
-    "textures": {
-        "base": "minecraft:block/birch_planks",
-        "top": "minecraft:block/birch_log",
-        "draw_front": "minecraft:block/birch_log"
-    }
-}

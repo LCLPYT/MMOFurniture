@@ -1,6 +1,0 @@
-{
-    "parent": "mmofurniture:block/upgraded_fence_post",
-    "textures": {
-        "post": "minecraft:block/spruce_log"
-    }
-}

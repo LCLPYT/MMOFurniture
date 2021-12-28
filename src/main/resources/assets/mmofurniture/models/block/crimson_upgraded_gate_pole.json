@@ -1,6 +1,0 @@
-{
-    "parent": "mmofurniture:block/upgraded_gate_pole",
-    "textures": {
-        "pole": "minecraft:block/crimson_stem"
-    }
-}

@@ -1,9 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_cabinet_left_closed",
-    "textures": {
-        "top": "block/crimson_stem",
-        "base": "block/crimson_planks",
-        "draw_front": "block/crimson_stem",
-        "legs": "block/crimson_planks"
-    }
-}

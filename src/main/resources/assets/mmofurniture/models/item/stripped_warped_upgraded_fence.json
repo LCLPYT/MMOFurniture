@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:item/upgraded_fence",
-    "textures": {
-        "plank": "minecraft:block/stripped_warped_stem",
-        "middle": "minecraft:block/warped_stem",
-        "post": "minecraft:block/stripped_warped_stem"
-    }
-}

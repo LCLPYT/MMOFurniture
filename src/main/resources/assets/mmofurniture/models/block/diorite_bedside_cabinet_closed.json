@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/bedside_cabinet_closed",
-    "textures": {
-        "base": "minecraft:block/diorite",
-        "top": "minecraft:block/polished_diorite",
-        "draw_front": "minecraft:block/polished_diorite"
-    }
-}

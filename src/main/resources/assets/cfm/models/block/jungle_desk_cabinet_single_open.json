@@ -1,0 +1,10 @@
+{
+    "parent": "cfm:block/desk_cabinet_single_open",
+    "textures": {
+        "top": "block/jungle_log",
+        "base": "block/jungle_planks",
+        "draw": "block/stripped_jungle_log",
+        "draw_front": "block/jungle_log",
+        "legs": "block/jungle_planks"
+    }
+}

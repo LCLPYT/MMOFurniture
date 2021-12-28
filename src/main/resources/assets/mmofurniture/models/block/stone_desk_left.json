@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_left",
-    "textures": {
-        "base": "minecraft:block/cobblestone",
-        "top": "block/stone",
-        "legs": "minecraft:block/cobblestone"
-    }
-}

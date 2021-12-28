@@ -48,7 +48,7 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
 
     @Override
     protected Text getContainerName() {
-        return new TranslatableText("container.mmofurniture.crate");
+        return new TranslatableText("container.cfm.crate");
     }
 
     @Override

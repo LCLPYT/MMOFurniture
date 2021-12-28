@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/stripped_upgraded_gate_left_closed",
-    "textures": {
-        "hinge": "minecraft:block/crimson_stem",
-        "pole": "minecraft:block/crimson_planks",
-        "plank": "minecraft:block/stripped_crimson_stem"
-    }
-}

@@ -1,0 +1,8 @@
+{
+    "parent": "cfm:block/desk_cabinet_middle_closed",
+    "textures": {
+        "top": "block/polished_granite",
+        "base": "block/granite",
+        "draw_front": "block/polished_granite"
+    }
+}

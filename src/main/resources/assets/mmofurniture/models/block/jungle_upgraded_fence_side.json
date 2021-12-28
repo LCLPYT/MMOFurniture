@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/upgraded_fence_side",
-    "textures": {
-        "plank": "minecraft:block/jungle_planks",
-        "middle": "minecraft:block/jungle_log"
-    }
-}

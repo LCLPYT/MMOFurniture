@@ -27,7 +27,7 @@ public class DoorMatScreen extends Screen {
     private ButtonWidget btnSave;
 
     public DoorMatScreen(DoorMatBlockEntity doorMatBlockEntity) {
-        super(new TranslatableText("gui.mmofurniture.door_mat_message"));
+        super(new TranslatableText("gui.cfm.door_mat_message"));
         this.doorMatBlockEntity = doorMatBlockEntity;
     }
 
@@ -52,7 +52,7 @@ public class DoorMatScreen extends Screen {
 
         this.children.add(this.nameField);
 
-        this.btnSave = this.addButton(new ButtonWidget(guiLeft + 7, guiTop + 42, 79, 20, new TranslatableText("gui.button.mmofurniture.save"), button -> {
+        this.btnSave = this.addButton(new ButtonWidget(guiLeft + 7, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.save"), button -> {
             if (this.isValidName()) {
                 MMONetworking.sendPacketToServer(new DoorMatMessagePacket(this.doorMatBlockEntity.getPos(), this.nameField.getText()));
                 if (this.client.player != null) this.client.player.closeScreen();
@@ -60,7 +60,7 @@ public class DoorMatScreen extends Screen {
         }));
         this.btnSave.active = false;
 
-        this.addButton(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.mmofurniture.cancel"), button -> this.onClose()));
+        this.addButton(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.cancel"), button -> this.onClose()));
     }
 
     @Override

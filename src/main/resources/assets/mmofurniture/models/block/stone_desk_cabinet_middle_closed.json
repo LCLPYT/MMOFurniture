@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_cabinet_middle_closed",
-    "textures": {
-        "top": "block/stone",
-        "base": "block/cobblestone",
-        "draw_front": "block/stone"
-    }
-}

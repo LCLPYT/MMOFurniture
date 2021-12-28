@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/chair",
-    "textures": {
-        "seat": "minecraft:block/jungle_log",
-        "legs": "minecraft:block/stripped_jungle_log"
-    }
-}

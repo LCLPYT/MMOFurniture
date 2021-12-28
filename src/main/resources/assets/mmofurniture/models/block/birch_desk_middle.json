@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_middle",
-    "textures": {
-        "base": "minecraft:block/birch_planks",
-        "top": "minecraft:block/birch_log"
-    }
-}

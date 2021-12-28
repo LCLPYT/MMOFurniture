@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:item/stripped_upgraded_gate",
-    "textures": {
-        "hinge": "minecraft:block/spruce_log",
-        "pole": "minecraft:block/spruce_planks",
-        "plank": "minecraft:block/stripped_spruce_log"
-    }
-}

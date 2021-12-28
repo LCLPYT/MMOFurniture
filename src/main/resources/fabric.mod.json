@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "mmofurniture",
+  "id": "cfm",
   "version": "${version}",
 
   "name": "MMOFurniture",
@@ -15,7 +15,7 @@
   },
 
   "license": "GPL v3",
-  "icon": "assets/mmofurniture/icon.png",
+  "icon": "assets/cfm/icon.png",
 
   "environment": "*",
   "entrypoints": {

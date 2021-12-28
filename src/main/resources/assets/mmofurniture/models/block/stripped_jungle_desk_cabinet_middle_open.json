@@ -1,9 +1,0 @@
-{
-    "parent": "mmofurniture:block/desk_cabinet_middle_open",
-    "textures": {
-        "top": "block/stripped_jungle_log",
-        "base": "block/stripped_jungle_log",
-        "draw": "block/stripped_jungle_log",
-        "draw_front": "block/jungle_log"
-    }
-}

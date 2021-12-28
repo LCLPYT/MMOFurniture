@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/park_bench_left",
-    "textures": {
-        "legs": "minecraft:block/warped_stem",
-        "plank": "minecraft:block/warped_planks"
-    }
-}

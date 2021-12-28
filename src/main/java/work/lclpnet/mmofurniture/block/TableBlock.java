@@ -13,7 +13,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
-import work.lclpnet.mmocontent.block.ext.MMOBlock;
 import work.lclpnet.mmofurniture.util.VoxelShapeHelper;
 
 import java.util.ArrayList;

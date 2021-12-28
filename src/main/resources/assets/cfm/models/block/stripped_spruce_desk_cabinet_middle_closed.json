@@ -1,0 +1,8 @@
+{
+    "parent": "cfm:block/desk_cabinet_middle_closed",
+    "textures": {
+        "top": "block/stripped_spruce_log",
+        "base": "block/stripped_spruce_log",
+        "draw_front": "block/spruce_log"
+    }
+}

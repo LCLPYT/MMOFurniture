@@ -1,8 +1,0 @@
-{
-    "parent": "mmofurniture:item/stripped_upgraded_gate",
-    "textures": {
-        "hinge": "minecraft:block/birch_log",
-        "pole": "minecraft:block/birch_planks",
-        "plank": "minecraft:block/stripped_birch_log"
-    }
-}

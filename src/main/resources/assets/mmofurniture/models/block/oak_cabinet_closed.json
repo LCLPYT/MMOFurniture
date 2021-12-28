@@ -1,7 +1,0 @@
-{
-    "parent": "mmofurniture:block/cabinet_closed",
-    "textures": {
-        "door": "block/oak_log",
-        "base": "block/oak_planks"
-    }
-}
