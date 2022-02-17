@@ -17,12 +17,7 @@ public class LandPathNodeMakerMixin {
 
     @Inject(
             method = "getCommonNodeType(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/ai/pathing/PathNodeType;",
-            at = @At(
-                    value = "INVOKE_ASSIGN",
-                    target = "Lnet/minecraft/world/BlockView;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;",
-                    ordinal = 0,
-                    shift = At.Shift.AFTER
-            ),
+            at = @At("HEAD"),
             cancellable = true
     )
     private static void onOverrideNodeType(BlockView blockView, BlockPos blockPos, CallbackInfoReturnable<PathNodeType> cir) {
