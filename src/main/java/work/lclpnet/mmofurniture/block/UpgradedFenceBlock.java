@@ -120,8 +120,7 @@ public class UpgradedFenceBlock extends FurnitureWaterloggedBlock implements IPa
         return this.getFenceState(state, world, pos);
     }
 
-    private BlockState getFenceState(BlockState state, WorldAccess world, BlockPos pos)
-    {
+    private BlockState getFenceState(BlockState state, WorldAccess world, BlockPos pos) {
         boolean north = canConnectToBlock(world, pos, Direction.NORTH);
         boolean east = canConnectToBlock(world, pos, Direction.EAST);
         boolean south = canConnectToBlock(world, pos, Direction.SOUTH);
@@ -129,14 +128,12 @@ public class UpgradedFenceBlock extends FurnitureWaterloggedBlock implements IPa
         return state.with(NORTH, north).with(EAST, east).with(SOUTH, south).with(WEST, west);
     }
 
-    private boolean canConnectToBlock(WorldAccess world, BlockPos pos, Direction direction)
-    {
+    private boolean canConnectToBlock(WorldAccess world, BlockPos pos, Direction direction) {
         BlockPos offsetPos = pos.offset(direction);
         BlockState offsetState = world.getBlockState(offsetPos);
 
         boolean flag1 = false;
-        if (offsetState.getBlock() instanceof UpgradedGateBlock)
-        {
+        if (offsetState.getBlock() instanceof UpgradedGateBlock) {
             Direction gateDirection = offsetState.get(UpgradedGateBlock.DIRECTION);
             DoorHinge hingeSide = offsetState.get(UpgradedGateBlock.HINGE);
             Direction hingeFace = hingeSide == DoorHinge.LEFT ? gateDirection.rotateYCounterclockwise() : gateDirection.rotateYClockwise();

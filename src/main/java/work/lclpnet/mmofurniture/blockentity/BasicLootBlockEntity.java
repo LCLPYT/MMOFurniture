@@ -72,7 +72,7 @@ public abstract class BasicLootBlockEntity extends LootableContainerBlockEntity 
     public void readNbt(NbtCompound tag) {
         super.readNbt(tag);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
-        if(!this.deserializeLootTable(tag)) {
+        if (!this.deserializeLootTable(tag)) {
             Inventories.readNbt(tag, this.inventory);
         }
     }

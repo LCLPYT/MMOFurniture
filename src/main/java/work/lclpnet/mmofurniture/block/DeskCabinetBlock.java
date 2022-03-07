@@ -47,8 +47,7 @@ public class DeskCabinetBlock extends DeskBlock implements BlockEntityProvider, 
         final VoxelShape[] DESK_DRAWS = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.createCuboidShape(2, 2, 3, 14, 14, 15), Direction.SOUTH));
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
-        for(BlockState state : states)
-        {
+        for (BlockState state : states) {
             Direction direction = state.get(DIRECTION);
             Type type = state.get(TYPE);
             List<VoxelShape> shapes = new ArrayList<>();
@@ -67,7 +66,7 @@ public class DeskCabinetBlock extends DeskBlock implements BlockEntityProvider, 
         }
         return builder.build();
     }
-    
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(DIRECTION).getOpposite() == hit.getSide()) {

@@ -10,7 +10,7 @@ import work.lclpnet.mmofurniture.module.MailBoxModule;
 
 public class MailBoxScreenHandler extends ScreenHandler {
 
-    private MailBoxBlockEntity mailBoxBlockEntity;
+    private final MailBoxBlockEntity mailBoxBlockEntity;
 
     public MailBoxScreenHandler(int syncId, PlayerInventory playerInventory, MailBoxBlockEntity mailBoxBlockEntity) {
         super(MailBoxModule.screenHandlerType, syncId);

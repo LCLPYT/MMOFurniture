@@ -15,6 +15,7 @@ public class DeskModule extends AbstractVariantModule {
 
             new MMOBlockRegistrar(new DeskBlock(parent, (short) variantIdx)) // only supports up to 2^16 - 2 variants
                     .register(MMOFurniture.identifier("%s_desk", variant), MMOFurniture.ITEM_GROUP);
-        } catch (IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
     }
 }

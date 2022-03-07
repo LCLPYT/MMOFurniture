@@ -27,7 +27,8 @@ public class OpenableViewerCountManager<T extends Inventory & OpenableContainer>
     }
 
     @Override
-    protected void onContainerClose(World world, BlockPos pos, BlockState state) {}
+    protected void onContainerClose(World world, BlockPos pos, BlockState state) {
+    }
 
     @Override
     protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {
