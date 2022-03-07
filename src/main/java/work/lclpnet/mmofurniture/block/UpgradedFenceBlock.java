@@ -143,8 +143,7 @@ public class UpgradedFenceBlock extends FurnitureWaterloggedBlock implements IPa
             flag1 = direction == hingeFace.getOpposite() || (!offsetState.get(UpgradedGateBlock.DOUBLE) && direction.getAxis() != gateDirection.getAxis());
         }
 
-        Block block = offsetState.getBlock();
-        return !cannotConnect(block) && offsetState.isSideSolidFullSquare(world, offsetPos, direction.getOpposite()) || block.isIn(UpgradedFenceModule.tag) || flag1;
+        return !cannotConnect(offsetState) && offsetState.isSideSolidFullSquare(world, offsetPos, direction.getOpposite()) || offsetState.isIn(UpgradedFenceModule.tag) || flag1;
     }
 
     @Override

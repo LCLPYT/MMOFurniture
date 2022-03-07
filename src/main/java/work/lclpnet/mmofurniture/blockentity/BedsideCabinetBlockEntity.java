@@ -1,7 +1,8 @@
 package work.lclpnet.mmofurniture.blockentity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.block.entity.ViewerCountManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.GenericContainerScreenHandler;
@@ -11,18 +12,21 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import work.lclpnet.mmofurniture.block.BedsideCabinetBlock;
+import work.lclpnet.mmofurniture.blockentity.util.OpenableContainer;
+import work.lclpnet.mmofurniture.blockentity.util.OpenableViewerCountManager;
 import work.lclpnet.mmofurniture.module.BedsideCabinetModule;
-import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
-public class BedsideCabinetBlockEntity extends BasicLootBlockEntity {
+public class BedsideCabinetBlockEntity extends BasicLootBlockEntity implements OpenableContainer {
 
-    private int playerCount;
+    private final ViewerCountManager stateManager;
 
-    public BedsideCabinetBlockEntity() {
-        super(BedsideCabinetModule.blockEntityType);
+    public BedsideCabinetBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(BedsideCabinetModule.blockEntityType, blockPos, blockState);
+        stateManager = new OpenableViewerCountManager<>(this);
     }
 
     @Override
@@ -42,59 +46,23 @@ public class BedsideCabinetBlockEntity extends BasicLootBlockEntity {
 
     @Override
     public void onOpen(PlayerEntity player) {
-        if (!player.isSpectator()) {
-            if (this.playerCount < 0) {
-                this.playerCount = 0;
-            }
-            this.playerCount++;
-
-            BlockState blockState = this.getCachedState();
-            boolean open = blockState.get(BedsideCabinetBlock.OPEN);
-            if (!open) {
-                this.playDoorSound(blockState, FurnitureSounds.BLOCK_BEDSIDE_CABINET_OPEN);
-                this.setDoorState(blockState, true);
-            }
-
-            this.scheduleTick();
-        }
+        if (!this.removed && !player.isSpectator())
+            this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
     }
 
     @Override
     public void onClose(PlayerEntity player) {
-        if (!player.isSpectator()) this.playerCount--;
+        if (!this.removed && !player.isSpectator())
+            this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
     }
 
-    private void scheduleTick() {
-        if (this.world != null)
-            this.world.getBlockTickScheduler().schedule(this.getPos(), this.getCachedState().getBlock(), 5);
+    public void scheduledTick() {
+        if (!this.removed)
+            this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
     }
 
-    public void onScheduledTick() {
-        int x = this.pos.getX();
-        int y = this.pos.getY();
-        int z = this.pos.getZ();
-        World world = this.getWorld();
-        if (world != null) {
-            this.playerCount = ChestBlockEntity.countViewers(world, this, x, y, z); //Gets a count of players around using this inventory
-            if (this.playerCount > 0) {
-                this.scheduleTick();
-            } else {
-                BlockState blockState = this.getCachedState();
-                if (!(blockState.getBlock() instanceof BedsideCabinetBlock)) {
-                    this.markRemoved();
-                    return;
-                }
-
-                boolean open = blockState.get(BedsideCabinetBlock.OPEN);
-                if (open) {
-                    this.playDoorSound(blockState, FurnitureSounds.BLOCK_BEDSIDE_CABINET_CLOSE);
-                    this.setDoorState(blockState, false);
-                }
-            }
-        }
-    }
-
-    private void playDoorSound(BlockState blockState, SoundEvent soundEvent) {
+    @Override
+    public void playOpenSound(BlockState blockState, SoundEvent soundEvent) {
         Vec3i directionVec = blockState.get(BedsideCabinetBlock.DIRECTION).getVector();
         double x = this.pos.getX() + 0.5D + directionVec.getX() / 2.0D;
         double y = this.pos.getY() + 0.5D + directionVec.getY() / 2.0D;
@@ -105,10 +73,11 @@ public class BedsideCabinetBlockEntity extends BasicLootBlockEntity {
         }
     }
 
-    private void setDoorState(BlockState blockState, boolean open) {
+    @Override
+    public void setOpen(BlockState blockState, boolean open) {
         World world = this.getWorld();
         if (world != null) {
-            world.setBlockState(this.getPos(), blockState.with(BedsideCabinetBlock.OPEN, open), 3);
+            world.setBlockState(this.getPos(), blockState.with(BedsideCabinetBlock.OPEN, open), Block.NOTIFY_ALL);
         }
     }
 }

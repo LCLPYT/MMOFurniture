@@ -78,8 +78,7 @@ public class CrateBlock extends FurnitureHorizontalBlock implements IPortableInv
     @Override
     public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
         BlockEntity tileEntity = world.getBlockEntity(pos);
-        if (tileEntity instanceof CrateBlockEntity) {
-            CrateBlockEntity crateTileEntity = (CrateBlockEntity) tileEntity;
+        if (tileEntity instanceof CrateBlockEntity crateTileEntity) {
             if (crateTileEntity.isLocked() && !player.getUuid().equals(crateTileEntity.getOwnerUuid()))
                 return 0.0005F;
         }
@@ -100,7 +99,7 @@ public class CrateBlock extends FurnitureHorizontalBlock implements IPortableInv
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity tileEntity = world.getBlockEntity(pos);
         if (tileEntity instanceof CrateBlockEntity)
-            ((CrateBlockEntity) tileEntity).onScheduledTick();
+            ((CrateBlockEntity) tileEntity).scheduledTick();
     }
 
     @Override
@@ -112,8 +111,8 @@ public class CrateBlock extends FurnitureHorizontalBlock implements IPortableInv
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new CrateBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new CrateBlockEntity(pos, state);
     }
 
     @Override

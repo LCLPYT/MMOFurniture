@@ -45,8 +45,8 @@ public class DoorMatBlock extends FurnitureHorizontalWaterloggedBlock implements
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new DoorMatBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new DoorMatBlockEntity(pos, state);
     }
 
     @Override

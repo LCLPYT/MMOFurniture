@@ -33,7 +33,7 @@ public class DoorMatMessagePacket extends MCPacket implements IServerPacketHandl
         if (player == null) return;
 
         server.execute(() -> {
-            World world = player.getServerWorld();
+            World world = player.getWorld();
             if (!world.isRegionLoaded(pos, pos)) return;
 
             BlockEntity blockEntity = world.getBlockEntity(pos);

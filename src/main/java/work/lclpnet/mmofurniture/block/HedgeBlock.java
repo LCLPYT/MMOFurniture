@@ -118,8 +118,7 @@ public class HedgeBlock extends FurnitureWaterloggedBlock {
         BlockPos offsetPos = pos.offset(direction);
         BlockState offsetState = world.getBlockState(offsetPos);
 
-        Block block = offsetState.getBlock();
-        return !cannotConnect(block) && offsetState.isSideSolidFullSquare(world, offsetPos, direction.getOpposite()) || block.isIn(HedgeModule.tag);
+        return !cannotConnect(offsetState) && offsetState.isSideSolidFullSquare(world, offsetPos, direction.getOpposite()) || offsetState.isIn(HedgeModule.tag);
     }
 
     @Override

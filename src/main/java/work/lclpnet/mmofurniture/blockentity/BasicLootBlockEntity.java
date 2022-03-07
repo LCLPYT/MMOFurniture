@@ -6,8 +6,9 @@ import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,8 +20,8 @@ public abstract class BasicLootBlockEntity extends LootableContainerBlockEntity 
     private final int[] slots;
     protected DefaultedList<ItemStack> inventory;
 
-    protected BasicLootBlockEntity(BlockEntityType<?> blockEntityType) {
-        super(blockEntityType);
+    protected BasicLootBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+        super(blockEntityType, blockPos, blockState);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         this.slots = IntStream.range(0, this.size()).toArray();
     }
@@ -60,20 +61,19 @@ public abstract class BasicLootBlockEntity extends LootableContainerBlockEntity 
     }
 
     @Override
-    public CompoundTag toTag(CompoundTag tag) {
-        super.toTag(tag);
+    public void writeNbt(NbtCompound tag) {
+        super.writeNbt(tag);
         if (!this.serializeLootTable(tag)) {
-            Inventories.toTag(tag, this.inventory);
+            Inventories.writeNbt(tag, this.inventory);
         }
-        return tag;
     }
 
     @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
+    public void readNbt(NbtCompound tag) {
+        super.readNbt(tag);
         this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         if(!this.deserializeLootTable(tag)) {
-            Inventories.fromTag(tag, this.inventory);
+            Inventories.readNbt(tag, this.inventory);
         }
     }
 

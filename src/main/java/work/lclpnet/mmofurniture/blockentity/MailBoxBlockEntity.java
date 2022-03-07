@@ -1,19 +1,21 @@
 package work.lclpnet.mmofurniture.blockentity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.math.BlockPos;
 import work.lclpnet.mmofurniture.inventory.MailBoxScreenHandler;
 import work.lclpnet.mmofurniture.module.MailBoxModule;
 
 public class MailBoxBlockEntity extends BasicLootBlockEntity implements ExtendedScreenHandlerFactory {
 
-    public MailBoxBlockEntity() {
-        super(MailBoxModule.blockEntityType);
+    public MailBoxBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(MailBoxModule.blockEntityType, blockPos, blockState);
     }
 
     @Override

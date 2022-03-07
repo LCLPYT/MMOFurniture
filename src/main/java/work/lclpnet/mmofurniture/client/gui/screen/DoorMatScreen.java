@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.StringVisitable;
@@ -50,9 +51,9 @@ public class DoorMatScreen extends Screen {
         if (this.doorMatBlockEntity.getMessage() != null)
             this.nameField.setText(this.doorMatBlockEntity.getMessage());
 
-        this.children.add(this.nameField);
+        this.addDrawableChild(this.nameField);
 
-        this.btnSave = this.addButton(new ButtonWidget(guiLeft + 7, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.save"), button -> {
+        this.btnSave = this.addDrawableChild(new ButtonWidget(guiLeft + 7, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.save"), button -> {
             if (this.isValidName()) {
                 MMONetworking.sendPacketToServer(new DoorMatMessagePacket(this.doorMatBlockEntity.getPos(), this.nameField.getText()));
                 if (this.client.player != null) this.client.player.closeScreen();
@@ -60,7 +61,7 @@ public class DoorMatScreen extends Screen {
         }));
         this.btnSave.active = false;
 
-        this.addButton(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.cancel"), button -> this.onClose()));
+        this.addDrawableChild(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.cancel"), button -> this.onClose()));
     }
 
     @Override
@@ -75,8 +76,9 @@ public class DoorMatScreen extends Screen {
         if (this.client == null) return;
 
         this.renderBackground(matrices);
-        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.client.getTextureManager().bindTexture(GUI_TEXTURE);
+        RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
+        RenderSystem.setShaderTexture(0, GUI_TEXTURE);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         int startX = (this.width - this.backgroundWith) / 2;
         int startY = (this.height - this.backgroundHeight) / 2;
         this.drawTexture(matrices, startX, startY, 0, 0, this.backgroundWith, this.backgroundHeight);

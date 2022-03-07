@@ -35,6 +35,6 @@ public class DoorMatItem extends BlockItem {
     protected void openDoorMatScreen(World world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof DoorMatBlockEntity)
-            MinecraftClient.getInstance().openScreen(new DoorMatScreen((DoorMatBlockEntity) blockEntity));
+            MinecraftClient.getInstance().setScreen(new DoorMatScreen((DoorMatBlockEntity) blockEntity));
     }
 }

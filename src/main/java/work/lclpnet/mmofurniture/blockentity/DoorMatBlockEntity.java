@@ -1,10 +1,12 @@
 package work.lclpnet.mmofurniture.blockentity;
 
+import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import work.lclpnet.mmofurniture.module.DoorMatModule;
 
@@ -12,8 +14,8 @@ public class DoorMatBlockEntity extends BlockEntity implements IUpdatePacketRece
 
     private String message = null;
 
-    public DoorMatBlockEntity() {
-        super(DoorMatModule.blockEntityType);
+    public DoorMatBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(DoorMatModule.blockEntityType, blockPos, blockState);
     }
 
     public void setMessage(String message) {
@@ -28,32 +30,34 @@ public class DoorMatBlockEntity extends BlockEntity implements IUpdatePacketRece
     }
 
     @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
-        if (tag.contains("Message", 8)) { // TAG_STRING
+    public void readNbt(NbtCompound tag) {
+        super.readNbt(tag);
+        if (tag.contains("Message", NbtType.STRING))
             this.message = tag.getString("Message");
-        }
     }
 
     @Override
-    public CompoundTag toTag(CompoundTag tag) {
+    public void writeNbt(NbtCompound tag) {
         if (this.message != null) tag.putString("Message", this.message);
-        return super.toTag(tag);
+        super.writeNbt(tag);
     }
 
     @Nullable
     @Override
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return new BlockEntityUpdateS2CPacket(this.pos, 0, this.toInitialChunkDataTag());
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     @Override
-    public CompoundTag toInitialChunkDataTag() {
-        return this.toTag(new CompoundTag());
+    public NbtCompound toInitialChunkDataNbt() {
+        final NbtCompound tag = new NbtCompound();
+        this.writeNbt(tag);
+        return tag;
     }
 
     @Override
     public void onDataPacket(ClientConnection connection, BlockEntityUpdateS2CPacket packet) {
-        this.fromTag(this.getCachedState(), packet.getCompoundTag());
+        final NbtCompound nbt = packet.getNbt();
+        if (nbt != null) this.readNbt(nbt);
     }
 }

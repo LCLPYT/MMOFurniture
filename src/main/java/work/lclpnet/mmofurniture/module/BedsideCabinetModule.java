@@ -1,5 +1,6 @@
 package work.lclpnet.mmofurniture.module;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.registry.Registry;
@@ -21,7 +22,7 @@ public class BedsideCabinetModule extends AbstractVariantModule {
         super.register();
 
         blockEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("bedside_cabinet"),
-                BlockEntityType.Builder.create(BedsideCabinetBlockEntity::new, bedsideCabinetBlocks.toArray(new BedsideCabinetBlock[0])).build(null));
+                FabricBlockEntityTypeBuilder.create(BedsideCabinetBlockEntity::new, bedsideCabinetBlocks.toArray(new BedsideCabinetBlock[0])).build(null));
 
         bedsideCabinetBlocks = null;
     }

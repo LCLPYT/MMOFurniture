@@ -6,7 +6,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.ActionResult;
@@ -30,7 +30,7 @@ public class SeatEntity extends Entity {
     private SeatEntity(World world, BlockPos source, double yOffset) {
         this(ChairModule.seatType, world);
         this.source = source;
-        this.updatePosition(source.getX() + 0.5, source.getY() + yOffset, source.getZ() + 0.5);
+        this.setPosition(source.getX() + 0.5, source.getY() + yOffset, source.getZ() + 0.5);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SeatEntity extends Entity {
         }
         if (!this.world.isClient) {
             if (this.getPassengerList().isEmpty() || this.world.isAir(source)) {
-                this.remove();
+                this.kill();
                 world.updateComparators(getBlockPos(), world.getBlockState(getBlockPos()).getBlock());
             }
         }
@@ -67,11 +67,11 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    protected void readCustomDataFromTag(CompoundTag tag) {
+    protected void readCustomDataFromNbt(NbtCompound tag) {
     }
 
     @Override
-    protected void writeCustomDataToTag(CompoundTag tag) {
+    protected void writeCustomDataToNbt(NbtCompound tag) {
     }
 
     @Override

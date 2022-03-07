@@ -46,7 +46,7 @@ public class CrateScreenHandler extends ScreenHandler {
     public ItemStack transferSlot(PlayerEntity player, int index) {
         ItemStack clickedStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
-        if (slot != null && slot.hasStack()) {
+        if (slot.hasStack()) {
             ItemStack slotStack = slot.getStack();
             clickedStack = slotStack.copy();
             if (index < this.crateBlockEntity.size()) {

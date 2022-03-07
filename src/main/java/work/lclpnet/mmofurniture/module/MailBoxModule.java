@@ -1,5 +1,6 @@
 package work.lclpnet.mmofurniture.module;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -33,7 +34,7 @@ public class MailBoxModule extends AbstractVariantModule {
         super.register();
 
         blockEntityType = Registry.register(Registry.BLOCK_ENTITY_TYPE, MMOFurniture.identifier("mail_box"),
-                BlockEntityType.Builder.create(MailBoxBlockEntity::new, mailBoxBlocks.toArray(new MailBoxBlock[0])).build(null));
+                FabricBlockEntityTypeBuilder.create(MailBoxBlockEntity::new, mailBoxBlocks.toArray(new MailBoxBlock[0])).build(null));
 
         mailBoxBlocks = null;
     }

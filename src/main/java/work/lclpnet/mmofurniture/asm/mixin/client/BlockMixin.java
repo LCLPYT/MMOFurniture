@@ -16,7 +16,7 @@ import work.lclpnet.mmofurniture.block.BlindsBlock;
 public class BlockMixin {
 
     @Inject(
-            method = "shouldDrawSide(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/Direction;)Z",
+            method = "shouldDrawSide",
             at = @At(
                     value = "INVOKE_ASSIGN",
                     target = "Lnet/minecraft/util/shape/VoxelShapes;matchesAnywhere(Lnet/minecraft/util/shape/VoxelShape;Lnet/minecraft/util/shape/VoxelShape;Lnet/minecraft/util/function/BooleanBiFunction;)Z"
@@ -24,7 +24,8 @@ public class BlockMixin {
             locals = LocalCapture.CAPTURE_FAILHARD,
             cancellable = true
     )
-    private static void shouldDrawSideWithBlinds(BlockState state, BlockView world, BlockPos pos, Direction facing, CallbackInfoReturnable<Boolean> cir, BlockPos offsetPos, BlockState offsetState) {
-        if (offsetState.getBlock() instanceof BlindsBlock) cir.setReturnValue(true);
+    private static void shouldDrawSideWithBlinds(BlockState state, BlockView world, BlockPos pos, Direction side, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir, BlockState blockState) {
+        if (blockState.getBlock() instanceof BlindsBlock)
+            cir.setReturnValue(true);
     }
 }

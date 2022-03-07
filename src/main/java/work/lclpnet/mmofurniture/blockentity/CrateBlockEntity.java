@@ -1,12 +1,14 @@
 package work.lclpnet.mmofurniture.blockentity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.ViewerCountManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -17,6 +19,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
@@ -25,20 +28,22 @@ import org.jetbrains.annotations.Nullable;
 import work.lclpnet.mmofurniture.asm.type.IPlayerEntity;
 import work.lclpnet.mmofurniture.block.CabinetBlock;
 import work.lclpnet.mmofurniture.block.CrateBlock;
+import work.lclpnet.mmofurniture.blockentity.util.OpenableContainer;
+import work.lclpnet.mmofurniture.blockentity.util.OpenableViewerCountManager;
 import work.lclpnet.mmofurniture.inventory.CrateScreenHandler;
 import work.lclpnet.mmofurniture.module.CratesModule;
-import work.lclpnet.mmofurniture.sound.FurnitureSounds;
 
 import java.util.UUID;
 
-public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePacketReceiver, ExtendedScreenHandlerFactory {
+public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePacketReceiver, ExtendedScreenHandlerFactory, OpenableContainer {
 
     private UUID ownerUuid;
     private boolean locked;
-    private int playerCount;
+    private final ViewerCountManager stateManager;
 
-    public CrateBlockEntity() {
-        super(CratesModule.blockEntityType);
+    public CrateBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(CratesModule.blockEntityType, blockPos, blockState);
+        stateManager = new OpenableViewerCountManager<>(this);
     }
 
     @Override
@@ -81,68 +86,19 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
 
     @Override
     public void onOpen(PlayerEntity player) {
-        if (!player.isSpectator()) {
-            if (this.playerCount < 0) {
-                this.playerCount = 0;
-            }
-            this.playerCount++;
-
-            BlockState blockState = this.getCachedState();
-            boolean open = blockState.get(CrateBlock.OPEN);
-            if (!open) {
-                this.playLidSound(blockState, FurnitureSounds.BLOCK_CABINET_OPEN);
-                this.setLidState(blockState, true);
-            }
-
-            this.scheduleTick();
-        }
+        if (!this.removed && !player.isSpectator())
+            this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
     }
 
     @Override
     public void onClose(PlayerEntity player) {
-        if (!player.isSpectator()) this.playerCount--;
+        if (!this.removed && !player.isSpectator())
+            this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
     }
 
-    private void scheduleTick() {
-        if (this.world != null)
-            this.world.getBlockTickScheduler().schedule(this.getPos(), this.getCachedState().getBlock(), 5);
-    }
-
-    public void onScheduledTick() {
-        int x = this.pos.getX();
-        int y = this.pos.getY();
-        int z = this.pos.getZ();
-        World world = this.getWorld();
-        if (world != null) {
-            this.updatePlayerCount(world, this, x, y, z);
-            if (this.playerCount > 0) {
-                this.scheduleTick();
-            } else {
-                BlockState blockState = this.getCachedState();
-                if (!(blockState.getBlock() instanceof CrateBlock)) {
-                    this.markRemoved();
-                    return;
-                }
-
-                boolean open = blockState.get(CrateBlock.OPEN);
-                if (open) {
-                    this.playLidSound(blockState, FurnitureSounds.BLOCK_CABINET_CLOSE);
-                    this.setLidState(blockState, false);
-                }
-            }
-        }
-    }
-
-    private void updatePlayerCount(World world, Inventory inventory, int x, int y, int z) {
-        this.playerCount = 0;
-        for (PlayerEntity playerEntity : world.getNonSpectatingEntities(PlayerEntity.class, new Box((float) x - 5.0F, (float) y - 5.0F, (float) z - 5.0F, (float) (x + 1) + 5.0F, (float) (y + 1) + 5.0F, (float) (z + 1) + 5.0F))) {
-            if (playerEntity.currentScreenHandler instanceof CrateScreenHandler) {
-                Inventory crateInventory = ((CrateScreenHandler) playerEntity.currentScreenHandler).getCrateBlockEntity();
-                if (inventory == crateInventory) {
-                    this.playerCount++;
-                }
-            }
-        }
+    public void scheduledTick() {
+        if (!this.removed)
+            this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
     }
 
     public void removeUnauthorisedPlayers() {
@@ -162,7 +118,8 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
         }
     }
 
-    private void playLidSound(BlockState blockState, SoundEvent soundEvent) {
+    @Override
+    public void playOpenSound(BlockState blockState, SoundEvent soundEvent) {
         Vec3i directionVec = blockState.get(CabinetBlock.DIRECTION).getVector();
         double x = this.pos.getX() + 0.5D + directionVec.getX() / 2.0D;
         double y = this.pos.getY() + 0.5D + directionVec.getY() / 2.0D;
@@ -173,7 +130,8 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
         }
     }
 
-    private void setLidState(BlockState blockState, boolean open) {
+    @Override
+    public void setOpen(BlockState blockState, boolean open) {
         World world = this.getWorld();
         if (world != null) {
             world.setBlockState(this.getPos(), blockState.with(CrateBlock.OPEN, open), 3);
@@ -181,41 +139,51 @@ public class CrateBlockEntity extends BasicLootBlockEntity implements IUpdatePac
     }
 
     @Override
-    public void fromTag(BlockState state, CompoundTag tag) {
-        super.fromTag(state, tag);
+    public boolean isScreenHandler(ScreenHandler screenHandler) {
+        return screenHandler instanceof CrateScreenHandler;
+    }
+
+    @Override
+    public Inventory getEffectiveInventory(ScreenHandler screenHandler) {
+        return ((CrateScreenHandler) screenHandler).getCrateBlockEntity();
+    }
+
+    @Override
+    public void readNbt(NbtCompound tag) {
+        super.readNbt(tag);
         this.readData(tag);
     }
 
     @Override
-    public CompoundTag toTag(CompoundTag tag) {
+    public void writeNbt(NbtCompound tag) {
         this.writeData(tag);
-        return super.toTag(tag);
+        super.writeNbt(tag);
     }
 
     @Override
-    public CompoundTag toInitialChunkDataTag() {
-        return this.writeData(new CompoundTag());
+    public NbtCompound toInitialChunkDataNbt() {
+        return this.writeData(new NbtCompound());
     }
 
     @Nullable
     @Override
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return new BlockEntityUpdateS2CPacket(this.pos, 0, this.toInitialChunkDataTag());
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     @Override
     public void onDataPacket(ClientConnection connection, BlockEntityUpdateS2CPacket packet) {
-        CompoundTag compound = packet.getCompoundTag();
-        this.readData(compound);
+        NbtCompound compound = packet.getNbt();
+        if (compound != null)
+            this.readData(compound);
     }
 
-    private void readData(CompoundTag compound) {
+    private void readData(NbtCompound compound) {
         if (compound.containsUuid("OwnerUUID")) this.ownerUuid = compound.getUuid("OwnerUUID");
-        // 1 =: TAG_BYTE
-        if (compound.contains("Locked", 1)) this.locked = compound.getBoolean("Locked");
+        if (compound.contains("Locked", NbtType.BYTE)) this.locked = compound.getBoolean("Locked");
     }
 
-    private CompoundTag writeData(CompoundTag compound) {
+    private NbtCompound writeData(NbtCompound compound) {
         if (this.ownerUuid != null) compound.putUuid("OwnerUUID", this.ownerUuid);
         compound.putBoolean("Locked", this.locked);
         return compound;

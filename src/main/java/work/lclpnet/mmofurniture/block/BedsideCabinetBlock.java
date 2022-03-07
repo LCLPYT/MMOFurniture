@@ -39,8 +39,7 @@ public class BedsideCabinetBlock extends FurnitureHorizontalWaterloggedBlock imp
         SHAPES = this.generateShapes(this.getStateManager().getStates());
     }
 
-    private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states)
-    {
+    private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states) {
         final VoxelShape[] LEG_BACK_LEG = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.createCuboidShape(1, 0, 1, 3, 2, 3), Direction.SOUTH));
         final VoxelShape[] LEG_FRONT_LEFT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.createCuboidShape(1, 0, 11, 3, 2, 13), Direction.SOUTH));
         final VoxelShape[] LEG_FRONT_RIGHT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.createCuboidShape(13, 0, 11, 15, 2, 13), Direction.SOUTH));
@@ -58,8 +57,7 @@ public class BedsideCabinetBlock extends FurnitureHorizontalWaterloggedBlock imp
         final VoxelShape[] DRAW_INSIDE_RIGHT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.createCuboidShape(13, 10, 13, 15, 14, 20), Direction.SOUTH));
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
-        for(BlockState state : states)
-        {
+        for (BlockState state : states) {
             Direction direction = state.get(DIRECTION);
             List<VoxelShape> shapes = new ArrayList<>();
             shapes.add(LEG_BACK_LEG[direction.getHorizontal()]);
@@ -68,8 +66,7 @@ public class BedsideCabinetBlock extends FurnitureHorizontalWaterloggedBlock imp
             shapes.add(LEG_BACK_RIGHT[direction.getHorizontal()]);
             shapes.add(TOP[direction.getHorizontal()]);
             shapes.add(HANDLE_BOTTOM[direction.getHorizontal()]);
-            if(state.get(OPEN))
-            {
+            if (state.get(OPEN)) {
                 shapes.add(BASE_OPEN[direction.getHorizontal()]);
                 shapes.add(DRAW_TOP_OPEN[direction.getHorizontal()]);
                 shapes.add(DRAW_BOTTOM_OPEN[direction.getHorizontal()]);
@@ -77,9 +74,7 @@ public class BedsideCabinetBlock extends FurnitureHorizontalWaterloggedBlock imp
                 shapes.add(DRAW_INSIDE_BOTTOM[direction.getHorizontal()]);
                 shapes.add(DRAW_INSIDE_LEFT[direction.getHorizontal()]);
                 shapes.add(DRAW_INSIDE_RIGHT[direction.getHorizontal()]);
-            }
-            else
-            {
+            } else {
                 shapes.add(BASE_CLOSED[direction.getHorizontal()]);
                 shapes.add(HANDLE_TOP_CLOSED[direction.getHorizontal()]);
             }
@@ -116,13 +111,13 @@ public class BedsideCabinetBlock extends FurnitureHorizontalWaterloggedBlock imp
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof BedsideCabinetBlockEntity)
-            ((BedsideCabinetBlockEntity) blockEntity).onScheduledTick();
+            ((BedsideCabinetBlockEntity) blockEntity).scheduledTick();
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new BedsideCabinetBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new BedsideCabinetBlockEntity(pos, state);
     }
 
     @Override

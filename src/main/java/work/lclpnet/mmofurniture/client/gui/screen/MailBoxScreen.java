@@ -2,6 +2,7 @@ package work.lclpnet.mmofurniture.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -22,8 +23,9 @@ public class MailBoxScreen extends HandledScreen<MailBoxScreenHandler> {
     protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
         if (client == null) return;
 
-        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.client.getTextureManager().bindTexture(GUI_TEXTURE);
+        RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
+        RenderSystem.setShaderTexture(0, GUI_TEXTURE);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         int startX = (this.width - this.backgroundWidth) / 2;
         int startY = (this.height - this.backgroundHeight) / 2;
         this.drawTexture(matrices, startX, startY, 0, 0, this.backgroundWidth, this.backgroundHeight);
@@ -32,7 +34,7 @@ public class MailBoxScreen extends HandledScreen<MailBoxScreenHandler> {
     @Override
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
         this.textRenderer.draw(matrices, this.title.getString(), 8.0F, 6.0F, 0x404040);
-        this.textRenderer.draw(matrices, this.playerInventory.getDisplayName().getString(), 8.0F, (float) (this.backgroundHeight - 96 + 2), 0x404040);
+        this.textRenderer.draw(matrices, this.playerInventoryTitle.getString(), 8.0F, (float) (this.backgroundHeight - 96 + 2), 0x404040);
     }
 
     @Override

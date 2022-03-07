@@ -71,7 +71,7 @@ public class MailBoxBlock extends FurnitureHorizontalWaterloggedBlock implements
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new MailBoxBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new MailBoxBlockEntity(pos, state);
     }
 }

@@ -19,7 +19,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
@@ -56,18 +55,13 @@ public class DeskCabinetBlock extends DeskBlock implements BlockEntityProvider, 
             shapes.add(DESK_TOP[direction.getHorizontal()]);
             shapes.add(DESK_BACK[direction.getHorizontal()]);
             shapes.add(DESK_DRAWS[direction.getHorizontal()]);
-            switch(type)
-            {
-                case SINGLE:
+            switch (type) {
+                case SINGLE -> {
                     shapes.add(DESK_LEFT[direction.getHorizontal()]);
                     shapes.add(DESK_RIGHT[direction.getHorizontal()]);
-                    break;
-                case LEFT:
-                    shapes.add(DESK_LEFT[direction.getHorizontal()]);
-                    break;
-                case RIGHT:
-                    shapes.add(DESK_RIGHT[direction.getHorizontal()]);
-                    break;
+                }
+                case LEFT -> shapes.add(DESK_LEFT[direction.getHorizontal()]);
+                case RIGHT -> shapes.add(DESK_RIGHT[direction.getHorizontal()]);
             }
             builder.put(state, VoxelShapeHelper.combineAll(shapes));
         }
@@ -92,13 +86,13 @@ public class DeskCabinetBlock extends DeskBlock implements BlockEntityProvider, 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof DeskCabinetBlockEntity)
-            ((DeskCabinetBlockEntity) blockEntity).onScheduledTick();
+            ((DeskCabinetBlockEntity) blockEntity).scheduledTick();
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new DeskCabinetBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new DeskCabinetBlockEntity(pos, state);
     }
 
     @Override

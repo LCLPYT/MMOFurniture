@@ -91,13 +91,13 @@ public class CabinetBlock extends FurnitureHorizontalWaterloggedBlock implements
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof CabinetBlockEntity)
-            ((CabinetBlockEntity) blockEntity).onScheduledTick();
+            ((CabinetBlockEntity) blockEntity).scheduledTick();
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockView world) {
-        return new CabinetBlockEntity();
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new CabinetBlockEntity(pos, state);
     }
 
     @Override
