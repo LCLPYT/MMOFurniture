@@ -11,7 +11,7 @@ import net.minecraft.text.StringVisitable;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
-import work.lclpnet.mmocontent.networking.MMONetworking;
+import work.lclpnet.mmocontent.client.networking.MMOClientNetworking;
 import work.lclpnet.mmofurniture.MMOFurniture;
 import work.lclpnet.mmofurniture.blockentity.DoorMatBlockEntity;
 import work.lclpnet.mmofurniture.network.packet.DoorMatMessagePacket;
@@ -55,13 +55,13 @@ public class DoorMatScreen extends Screen {
 
         this.btnSave = this.addDrawableChild(new ButtonWidget(guiLeft + 7, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.save"), button -> {
             if (this.isValidName()) {
-                MMONetworking.sendPacketToServer(new DoorMatMessagePacket(this.doorMatBlockEntity.getPos(), this.nameField.getText()));
+                MMOClientNetworking.sendPacketToServer(new DoorMatMessagePacket(this.doorMatBlockEntity.getPos(), this.nameField.getText()));
                 if (this.client.player != null) this.client.player.closeScreen();
             }
         }));
         this.btnSave.active = false;
 
-        this.addDrawableChild(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.cancel"), button -> this.onClose()));
+        this.addDrawableChild(new ButtonWidget(guiLeft + 91, guiTop + 42, 79, 20, new TranslatableText("gui.button.cfm.cancel"), button -> this.close()));
     }
 
     @Override

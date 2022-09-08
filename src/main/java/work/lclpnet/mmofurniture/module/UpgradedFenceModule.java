@@ -1,15 +1,15 @@
 package work.lclpnet.mmofurniture.module;
 
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
+import net.minecraft.util.registry.Registry;
 import work.lclpnet.mmocontent.block.MMOBlockRegistrar;
 import work.lclpnet.mmofurniture.MMOFurniture;
 import work.lclpnet.mmofurniture.block.UpgradedFenceBlock;
 
 public class UpgradedFenceModule extends AbstractVariantModule {
 
-    public static Tag<Block> tag;
+    public static TagKey<Block> tag;
 
     public UpgradedFenceModule() {
         super(false);
@@ -18,7 +18,7 @@ public class UpgradedFenceModule extends AbstractVariantModule {
     @Override
     public void register() {
         super.register();
-        tag = TagRegistry.block(MMOFurniture.identifier("fences/upgraded"));
+        tag = TagKey.of(Registry.BLOCK_KEY, MMOFurniture.identifier("fences/upgraded"));
     }
 
     @Override

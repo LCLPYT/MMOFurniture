@@ -1,9 +1,8 @@
 package work.lclpnet.mmofurniture.module;
 
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +14,7 @@ import javax.annotation.Nullable;
 
 public class HedgeModule extends AbstractVariantModule {
 
-    public static Tag<Block> tag;
+    public static TagKey<Block> tag;
 
     public HedgeModule() {
         super(false, false, false);
@@ -24,7 +23,7 @@ public class HedgeModule extends AbstractVariantModule {
     @Override
     public void register() {
         super.register();
-        tag = TagRegistry.block(MMOFurniture.identifier("fences/hedge"));
+        tag = TagKey.of(Registry.BLOCK_KEY, MMOFurniture.identifier("fences/hedge"));
     }
 
     @Override

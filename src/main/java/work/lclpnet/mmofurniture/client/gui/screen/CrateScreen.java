@@ -9,7 +9,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
-import work.lclpnet.mmocontent.networking.MMONetworking;
+import work.lclpnet.mmocontent.client.networking.MMOClientNetworking;
 import work.lclpnet.mmofurniture.MMOFurniture;
 import work.lclpnet.mmofurniture.client.gui.widget.button.IconButtonWidget;
 import work.lclpnet.mmofurniture.inventory.CrateScreenHandler;
@@ -35,7 +35,7 @@ public class CrateScreen extends HandledScreen<CrateScreenHandler> {
     protected void init() {
         super.init();
         this.button = this.addDrawableChild(new IconButtonWidget(x + backgroundWidth + 2, this.y + 17, new TranslatableText("gui.button.cfm.lock"),
-                button -> MMONetworking.sendPacketToServer(new LockCratePacket()), ICONS_TEXTURE, 0, 0));
+                button -> MMOClientNetworking.sendPacketToServer(new LockCratePacket()), ICONS_TEXTURE, 0, 0));
         this.updateLockButton();
     }
 
